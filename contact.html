@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script>tailwind.config = { darkMode: "class" };</script>
     <link rel="icon" type="image/png" href="images/logo.png" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script>
+        (function() {
+            emailjs.init("hs1xmdJR6XVa9Qj2F");
+        })();
+    </script>
+
     <style>
         .animated-divider {
             height: 1.5px;
@@ -487,63 +495,32 @@
         if (contactForm && formStatus && window.emailjs) {
             const submitButton = contactForm.querySelector("button[type='submit']");
 
-            contactForm.addEventListener("submit", (e) => {
+            contactForm.addEventListener("submit", function(e) {
                 e.preventDefault();
 
-                const name = contactForm.name.value.trim();
-                const email = contactForm.email.value.trim();
-                const subject = contactForm.subject.value.trim();
-                const message = contactForm.message.value.trim();
-
-                if (!name || !email || !subject || !message) {
-                    formStatus.innerText =
-                        currentLang === "mk"
-                            ? "Ве молам пополнете ги сите полиња!"
-                            : "Please fill in all fields!";
-                    formStatus.classList.remove("text-emerald-300");
-                    formStatus.classList.add("text-red-300");
-                    formStatus.style.opacity = "1";
-                    setTimeout(() => { formStatus.style.opacity = "0"; }, 4000);
-                    return;
-                }
-
-                const originalButtonText = submitButton.innerHTML;
-                submitButton.disabled = true;
-                submitButton.innerHTML = currentLang === "mk" ? "Испраќање..." : "Sending...";
-
                 const templateParams = {
-                    from_name: name,
-                    from_email: email,
-                    subject: subject,
-                    message: message,
+                    from_name: contactForm.name.value,
+                    from_email: contactForm.email.value,
+                    subject: contactForm.subject.value,
+                    message: contactForm.message.value
                 };
 
-                emailjs
-                    .send("service_3hiujsl", "template_qx6maeh", templateParams)
-                    .then(() => {
+                emailjs.send("service_3hiujsl", "template_qx6maeh", templateParams)
+                    .then(function(response) {
+                        console.log("SUCCESS!", response);
+                        formStatus.style.opacity = "1";
+                        formStatus.style.color = "#6ee7b7";
+                        formStatus.textContent = translations[currentLang].form_success_text;
                         contactForm.reset();
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = originalButtonText;
 
-                        formStatus.classList.remove("text-red-300");
-                        formStatus.classList.add("text-emerald-300");
+                        setTimeout(() => {
+                            formStatus.style.opacity = "0";
+                        }, 3500);
+                    }, function(error) {
+                        console.log("FAILED...", error);
                         formStatus.style.opacity = "1";
-                        setTimeout(() => { formStatus.style.opacity = "0"; }, 4000);
-                    })
-                    .catch((error) => {
-                        console.error("EmailJS error:", error);
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = originalButtonText;
-
-                        formStatus.innerText =
-                            currentLang === "mk"
-                                ? "Настана грешка. Обидете се повторно подоцна!"
-                                : "Something went wrong. Please try again later!";
-
-                        formStatus.classList.remove("text-emerald-300");
-                        formStatus.classList.add("text-red-300");
-                        formStatus.style.opacity = "1";
-                        setTimeout(() => { formStatus.style.opacity = "0"; }, 5000);
+                        formStatus.style.color = "#f87171";
+                        formStatus.textContent = "Error sending message.";
                     });
             });
         }

@@ -93,7 +93,7 @@ const translations = {
         form_message_placeholder: "Hello Nikola, I would like to discuss...",
 
         form_button_text: "Execute sendMessage()",
-        form_success_text: "Message sent successfully. I’ll get back to you soon. :)",
+        form_success_text: "Message sent successfully. I’ll get back to you soon! :)",
     },
 
     mk: {
@@ -187,6 +187,6 @@ const translations = {
         form_message_placeholder: "Здраво Никола, би сакал да дискутирам...",
 
         form_button_text: "Испрати порака",
-        form_success_text: "Пораката е успешно испратена. Ќе ти одговорам наскоро. :)",
+        form_success_text: "Пораката е успешно испратена. Ќе ви одговорам наскоро! :)",
     }
 };

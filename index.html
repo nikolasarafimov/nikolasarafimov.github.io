@@ -208,8 +208,8 @@
                        data-translate="about_me"></p>
 
                     <div class="flex flex-wrap gap-4 pt-3">
-                        <a href="portfolio.html" class="px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-base font-semibold text-slate-950 transition-colors" data-translate="btn_portfolio"></a>
-                        <a href="contact.html" class="px-6 py-3 rounded-lg border border-slate-700 hover:border-emerald-400 text-base font-semibold transition-colors" data-translate="btn_contact"></a>
+                        <a href="portfolio.html" data-translate="btn_portfolio" class="inline-flex items-center justify-center px-7 py-3 rounded-full bg-emerald-400 text-slate-900 font-mono font-medium shadow-md transition-all duration-300 hover:bg-emerald-300 hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(52,211,153,0.6)]"></a>
+                        <a href="contact.html" data-translate="btn_contact" class="inline-flex items-center justify-center px-7 py-3 rounded-full border border-slate-700 font-mono font-medium text-slate-200 transition-all duration-300 hover:border-emerald-400 hover:text-emerald-400 hover:bg-emerald-400/5 hover:-translate-y-0.5"></a>
                     </div>
 
                     <div class="flex flex-wrap items-center gap-6 text-sm text-slate-400">
@@ -222,8 +222,8 @@
                 <div class="relative mt-10 lg:mt-0">
                     <div class="absolute -inset-1 bg-gradient-to-br from-emerald-500/30 via-sky-500/20 to-purple-500/30 blur-xl opacity-80"></div>
 
-                    <div class="code-area relative rounded-2xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8 pr-8 sm:pr-10 shadow-lg w-full overflow-x-auto lg:overflow-visible">
-                    <div class="flex items-center justify-between mb-5">
+                    <div class="code-area relative rounded-2xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8 shadow-lg w-full lg:max-w-[520px] xl:max-w-[580px]">
+                        <div class="flex items-center justify-between mb-6">
                             <div class="flex items-center gap-2">
                                 <span class="w-3.5 h-3.5 rounded-full bg-red-500"></span>
                                 <span class="w-3.5 h-3.5 rounded-full bg-amber-400"></span>
@@ -233,19 +233,25 @@
                                 portfolio/home.jsx
                             </span>
                         </div>
+                        <div class="max-w-full">
+                        <pre class="text-[0.95rem] sm:text-base font-mono text-slate-200 whitespace-pre-wrap break-words leading-[1.65] tracking-tight">
+<span class="text-slate-500">// quick intro</span>
+<span class="text-sky-400">const</span> <span class="text-emerald-400">nikola</span> <span class="text-sky-400">=</span> {
+  role: <span class="text-amber-300">"CS Student, Aspiring Web Developer"</span>,
+  location: <span class="text-amber-300">"Skopje, Macedonia"</span>,
+  focus: [
+    <span class="text-amber-300">"Full-Stack Web Development"</span>,
+    <span class="text-amber-300">"Clean Architecture"</span>,
+    <span class="text-amber-300">"Problem Solving"</span>
+  ],
+  currentlyLearning: <span class="text-amber-300">"Modern web & clean architecture"</span>
+};
 
-                        <pre class="text-base font-mono text-slate-200 whitespace-pre-wrap break-words lg:whitespace-pre leading-relaxed w-full">
-    <span class="text-slate-500">// quick intro</span>
-    <span class="text-sky-400">const</span> <span class="text-emerald-400">nikola</span> <span class="text-sky-400">=</span> {
-      role: <span class="text-amber-300">"Student &amp; Web Developer"</span>,
-      location: <span class="text-amber-300">"Skopje, Macedonia"</span>,
-      focus: [<span class="text-amber-300">"Frontend"</span>, <span class="text-amber-300">"Backend"</span>, <span class="text-amber-300">"Problem Solving"</span>],
-      currentlyLearning: <span class="text-amber-300">"Modern web and clean architecture"</span>
-    };
-
-    <span class="text-sky-400">function</span> <span class="text-emerald-400">buildDreams</span>() {
-      <span class="text-sky-400">return</span> <span class="text-amber-300">"Code. Create. Improve every day."</span>;
-    }</pre>
+<span class="text-sky-400">function</span> <span class="text-emerald-400">buildDreams</span>() {
+  <span class="text-sky-400">return</span> <span class="text-amber-300">"Code. Create. Improve every day."</span>;
+}
+</pre>
+                        </div>
                     </div>
                 </div>
             </div>

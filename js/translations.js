@@ -10,13 +10,13 @@ const translations = {
         im_nikola: "I'm",
         nikola_name: "Nikola Sarafimov",
 
-        typing1: "IT Student",
-        typing2: "Web Developer",
+        typing1: "CS & Software Engineering Student",
+        typing2: "Web Development Enthusiast",
         typing3: "Problem Solver",
         typing4: "Code Enthusiast",
         typing5: "Lifelong Learner",
 
-        about_me: "A computer science & software engineering student with a passion for building modern web applications, solving problems, and learning new technologies every day.",
+        about_me: "A computer science & software engineering student focused on building modern web applications, solving problems, and continuously learning new technologies.",
 
         btn_portfolio: "View Portfolio",
         btn_contact: "Contact Me",
@@ -103,17 +103,16 @@ const translations = {
         nav_portfolio: "Портфолио",
         nav_contact: "Контакт",
 
-        hello_world: "<здраво свет />",
         im_nikola: "Јас сум",
         nikola_name: "Никола Сарафимов",
 
-        typing1: "ИТ Студент",
-        typing2: "Веб Програмер",
+        typing1: "Студент по компјутерски науки",
+        typing2: "Ентузијаст за веб развој",
         typing3: "Решавач на проблеми",
         typing4: "Љубител на кодирање",
         typing5: "Вечен ученик",
 
-        about_me: "Студент по компјутерски науки и софтверско инженерство со страст за создавање модерни веб апликации, решавање проблеми и учење нови технологии секој ден.",
+        about_me: "Студент по компјутерски науки и софтверско инженерство фокусиран на создавање модерни веб апликации, решавање проблеми и континуирано учење нови технологии.",
 
         btn_portfolio: "Види Портфолио",
         btn_contact: "Контактирај ме",

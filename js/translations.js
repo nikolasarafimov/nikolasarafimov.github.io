@@ -34,15 +34,15 @@ const translations = {
         bio_page_subtitle: "My journey in the world of programming",
         bio_title: "About Me",
 
-        bio_p1: "My name is <strong class='text-emerald-300'>Nikola Sarafimov</strong>, and I’m a fourth-year Computer Science & Software Engineering student at <strong class='text-emerald-300'>FCSE – Skopje</strong>. I live in Skopje, Macedonia, where I study, build projects, and continuously grow as a developer.",
+        bio_p1: "My name is <strong class='text-emerald-300'>Nikola Sarafimov</strong>, а Computer Science & Software Engineering student at the <strong class='text-emerald-300'>Faculty of Computer Science and Engineering (FCSE)</strong>. Based in Skopje, Macedonia, I focus on building practical, well-structured software with an emphasis on clarity, maintainability, and real-world usability.",
 
-        bio_p2: "Before tech, I graduated from high school as a <strong class='text-emerald-300'>laboratory technician</strong>, gaining discipline, precision, and responsibility — skills that transitioned naturally into programming.",
+        bio_p2: "Prior to entering the field of computer science, I graduated from high school as a <strong class='text-emerald-300'>laboratory technician</strong>, where I developed a strong foundation in discipline, precision, and responsibility. These qualities naturally translated into my approach to programming and problem-solving.",
 
-        bio_p3: "My main interest is <strong class='text-emerald-300'>Full-stack Development</strong>. I enjoy creating clean, modern applications using React, Spring Boot, .NET Core, Django, Python, C#, Java, HTML, CSS, JavaScript, and Flutter.",
+        bio_p3: "While I have experience across multiple areas of software development, I am particularly drawn to <strong class='text-emerald-300'>Full-stack Web Development</strong>. I enjoy the process of designing and implementing complete systems - from intuitive user interfaces to robust backend architectures - using technologies such as <strong class='text-emerald-300'>React, Spring Boot, .NET Core, Django, Python, C#, Java, HTML, CSS, JavaScript, and Flutter</strong>.",
 
-        bio_p4: "My long-term goal is to grow as a <strong class='text-emerald-300'>Full-Stack Web Developer</strong>, contributing both independently and as part of a team.",
+        bio_p4: "My long-term goal is to grow into a highly capable <strong class='text-emerald-300'>Full-Stack Web Developer</strong>, contributing to meaningful projects both independently and within collaborative, multidisciplinary teams.",
 
-        bio_p5: "Outside the world of code, I enjoy <strong>video editing</strong>, sports, reading, and spending time with friends. These hobbies keep me creative, balanced, and inspired.",
+        bio_p5: "Beyond software development, I have a strong interest in <strong>video editing</strong>, sports, and reading. These activities help me maintain creativity, balance, and a clear perspective, which I believe are essential for long-term professional growth.",
 
         bio_status_label: "status:",
         bio_status: "\"Open for opportunities\"",

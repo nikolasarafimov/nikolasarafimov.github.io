@@ -11,6 +11,8 @@
     <style>
         #typingText {
             border-right: 2px solid #34d399;
+            padding-right: 4px;
+            text-shadow: 0 0 8px rgba(52,211,153,0.6);
             animation: blinkCursor 0.8s steps(1) infinite;
         }
         @keyframes blinkCursor {
@@ -74,6 +76,13 @@
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
         }
+        .code-area {
+            transition: transform 0.4s ease;
+        }
+        .code-area:hover {
+            transform: translateY(-4px);
+        }
+
         :root:not(.dark) .code-area {
             background: radial-gradient(
                     circle at 30% 40%,
@@ -114,6 +123,37 @@
         :root:not(.dark) footer a:hover {
             color: #10b981 !important;
         }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate-fade-in-left {
+            animation: fadeInLeft 0.9s ease-out forwards;
+        }
+        .animate-fade-in-right {
+            animation: fadeInRight 0.9s ease-out forwards;
+        }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.03); }
+        }
+
+        .animate-glow {
+            animation: glowPulse 6s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .animate-glow {
+                animation: none;
+                opacity: 0.7;
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-500">
@@ -135,7 +175,7 @@
                 </nav>
 
                 <div class="flex items-center gap-4 pl-6 ml-6 border-l border-slate-700 h-full leading-none">
-                    <button id="themeToggle" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
+                    <button id="themeToggle" aria-label="Toggle theme" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
                         <svg id="iconMoon" class="w-7 h-7 theme-icon-anim" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
                         </svg>
@@ -144,7 +184,7 @@
                         </svg>
                     </button>
 
-                    <button id="langToggle" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
+                    <button id="langToggle" aria-label="Switch language" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
                         MK
                     </button>
                 </div>
@@ -170,7 +210,7 @@
             <a data-translate="nav_contact" href="contact.html" class="block py-1 hover:text-emerald-400 transition-colors"></a>
 
             <div class="flex items-center justify-between pt-3 border-t border-slate-300/30 dark:border-slate-700 leading-none">
-                <button id="themeToggleMobile" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
+                <button id="themeToggleMobile" aria-label="Toggle theme" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
                     <svg id="iconMoonMobile" class="w-7 h-7 theme-icon-anim" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
                     </svg>
@@ -179,7 +219,7 @@
                     </svg>
                 </button>
 
-                <button id="langToggleMobile" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
+                <button id="langToggleMobile" aria-label="Switch language" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
                     MK
                 </button>
             </div>
@@ -189,7 +229,7 @@
     <main class="pt-[88px] md:pt-32 lg:pt-40 xl:pt-48 pb-28 flex-grow">
         <section class="max-w-[1300px] mx-auto px-6 sm:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-                <div class="space-y-5">
+                <div class="space-y-5 animate-fade-in-left">
                     <p class="text-sm tracking-[0.3em] uppercase text-emerald-400">
                         &lt;hello world /&gt;
                     </p>
@@ -208,8 +248,8 @@
                        data-translate="about_me"></p>
 
                     <div class="flex flex-wrap gap-4 pt-3">
-                        <a href="portfolio.html" data-translate="btn_portfolio" class="inline-flex items-center justify-center px-7 py-3 rounded-full bg-emerald-400 text-slate-900 font-mono font-medium shadow-md transition-all duration-300 hover:bg-emerald-300 hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(52,211,153,0.6)]"></a>
-                        <a href="contact.html" data-translate="btn_contact" class="inline-flex items-center justify-center px-7 py-3 rounded-full border border-slate-700 font-mono font-medium text-slate-200 transition-all duration-300 hover:border-emerald-400 hover:text-emerald-400 hover:bg-emerald-400/5 hover:-translate-y-0.5"></a>
+                        <a href="portfolio.html" data-translate="btn_portfolio" class="inline-flex items-center justify-center px-7 py-3 rounded-full bg-emerald-400 text-slate-900 font-mono font-medium shadow-md transition-all duration-300 hover:bg-emerald-300 hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(52,211,153,0.6)] active:scale-95 active:shadow-inner"></a>
+                        <a href="contact.html" data-translate="btn_contact" class="inline-flex items-center justify-center px-7 py-3 rounded-full border border-slate-700 font-mono font-medium text-slate-200 transition-all duration-300 hover:border-emerald-400 hover:text-emerald-400 hover:bg-emerald-400/5 hover:-translate-y-0.5 active:scale-95 active:shadow-inner"></a>
                     </div>
 
                     <div class="flex flex-wrap items-center gap-6 text-sm text-slate-400">
@@ -219,8 +259,8 @@
                     </div>
                 </div>
 
-                <div class="relative mt-10 lg:mt-0">
-                    <div class="absolute -inset-1 bg-gradient-to-br from-emerald-500/30 via-sky-500/20 to-purple-500/30 blur-xl opacity-80"></div>
+                <div class="relative mt-10 lg:mt-0 animate-fade-in-right">
+                    <div class="absolute -inset-1 bg-gradient-to-br from-emerald-500/30 via-sky-500/20 to-purple-500/30 blur-xl opacity-80 animate-glow"></div>
 
                     <div class="code-area relative rounded-2xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8 shadow-lg w-full lg:max-w-[520px] xl:max-w-[580px]">
                         <div class="flex items-center justify-between mb-6">
@@ -234,7 +274,7 @@
                             </span>
                         </div>
                         <div class="max-w-full">
-                        <pre class="text-[0.95rem] sm:text-base font-mono text-slate-200 whitespace-pre-wrap break-words leading-[1.65] tracking-tight">
+                        <pre class="text-[0.9rem] sm:text-[0.95rem] md:text-base font-mono text-slate-200 whitespace-pre-wrap break-words leading-[1.65] tracking-tight">
 <span class="text-slate-500">// quick intro</span>
 <span class="text-sky-400">const</span> <span class="text-emerald-400">nikola</span> <span class="text-sky-400">=</span> {
   role: <span class="text-amber-300">"CS Student, Aspiring Web Developer"</span>,

@@ -96,9 +96,52 @@
         :root:not(.dark) footer a:hover {
             color: #10b981 !important;
         }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .animate-fade-up {
+            opacity: 0;
+            animation: fadeUp 1s ease-out forwards;
+        }
+
+        .skill-card {
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .skill-card:hover i {
+            transform: rotate(-6deg) scale(1.15);
+        }
+
+        .skill-card:hover h3 {
+            letter-spacing: 0.02em;
+        }
+
+        .skill-card i,
+        .skill-card h3 {
+            transition: transform 0.3s ease, letter-spacing 0.3s ease;
+        }
+
+        .section-intro {
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards;
+        }
+        .section-intro.delay {
+            animation-delay: 0.15s;
+        }
+
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-500">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 h-screen overflow-hidden flex flex-col transition-colors duration-500">
+
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-slate-950/80 backdrop-blur-xl shadow-md border-b-0 h-14">
         <div class="w-full h-14 px-6 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-2 font-mono text-xl font-semibold leading-none select-none transition-all duration-300 hover:text-emerald-400 hover:scale-105 hover:[text-shadow:0_0_8px_rgba(52,211,153,0.8)]">
@@ -168,73 +211,77 @@
         </div>
     </header>
 
-    <main class="pt-[80px] md:pt-28 lg:pt-24 xl:pt-24 pb-10 flex-grow select-none">
+    <main class="pt-24 pb-4 flex-1 overflow-y-auto select-none">
         <section class="max-w-[1200px] mx-auto px-6 sm:px-8">
-            <div class="text-center mb-4">
-                <h2 class="font-mono text-xl sm:text-2xl font-bold flex justify-center items-center gap-2">
+            <div class="text-center mb-4 animate-fade-up">
+                <h2 class="font-mono text-xl sm:text-2xl font-bold flex items-center justify-center gap-2 select-none">
                     <span class="text-slate-400">&lt;</span>
                     <span class="text-emerald-400" data-translate="skills_title"></span>
                     <span class="text-slate-400">/&gt;</span>
                 </h2>
-                <p class="mt-2 text-sm text-slate-400" data-translate="skills_subtitle">
-                    Technologies and concepts I use to design, build, and maintain modern applications.
-                </p>
+                <p class="mt-1 text-sm text-slate-400" data-translate="skills_subtitle"></p>
+                <div class="mt-3 mx-auto w-16 h-[2px] bg-gradient-to-r from-emerald-400/0 via-emerald-400 to-emerald-400/0"></div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group relative rounded-2xl p-6 bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-slate-200/70 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_0_25px_rgba(0,0,0,0.5)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.25)] dark:hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex h-10 w-10 justify-center items-center bg-emerald-500/15 dark:bg-emerald-500/20 rounded-xl text-emerald-500 dark:text-emerald-300 shadow-inner shadow-emerald-400/20">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="skill-card group relative rounded-2xl p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.25)] dark:hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:-translate-y-1 hover:scale-[1.005] transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-500 dark:text-emerald-300 ring-1 ring-emerald-400/20">
                             <i class="fa-solid fa-code"></i>
                         </span>
-
-                        <h3 class="font-mono text-lg font-semibold text-slate-700 dark:text-emerald-300" data-translate="skills_languages_title"></h3>
+                        <h3 class="font-mono text-lg font-semibold tracking-tight text-slate-800 dark:text-emerald-300" data-translate="skills_languages_title"></h3>
                     </div>
 
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-3 leading-relaxed"
-                       data-translate="skills_languages_text"></p>
+                    <div class="my-4 h-px bg-slate-200/70 dark:bg-slate-700"></div>
 
-                    <ul class="space-y-1.5 text-[14px] text-slate-700 dark:text-slate-300 leading-snug">
-                        <li>HTML / CSS / JavaScript (ES6+) / TypeScript</li>
-                        <li>C++</li><li>C#</li><li>Java</li><li>Python</li><li>Dart</li>
+                    <p class="text-[13px] text-slate-600 dark:text-slate-400 leading-relaxed" data-translate="skills_languages_text"></p>
+
+                    <ul class="mt-4 space-y-1.5 text-[13px] text-slate-700 dark:text-slate-300">
+                        <li class="font-semibold text-slate-800 dark:text-slate-200">Web</li>
+                        <li class="pl-3">HTML, CSS, JavaScript, TypeScript</li>
+
+                        <li class="font-semibold pt-2 text-slate-800 dark:text-slate-200">Backend</li>
+                        <li class="pl-3">C#, Java, Python</li>
+
+                        <li class="font-semibold pt-2 text-slate-800 dark:text-slate-200">Systems</li>
+                        <li class="pl-3">C++, Dart</li>
                     </ul>
                 </div>
 
-
-                <div class="group relative rounded-2xl p-6 bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-slate-200/70 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_0_25px_rgba(0,0,0,0.5)] hover:shadow-[0_12px_40px_rgba(56,189,248,0.25)] dark:hover:shadow-[0_0_40px_rgba(56,189,248,0.4)] hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex h-10 w-10 justify-center items-center bg-sky-500/15 dark:bg-sky-500/20 rounded-xl text-sky-500 dark:text-sky-300 shadow-inner shadow-sky-400/20">
+                <div class="skill-card group relative rounded-2xl p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:shadow-[0_12px_40px_rgba(56,189,248,0.25)] dark:hover:shadow-[0_0_40px_rgba(56,189,248,0.4)] hover:-translate-y-1 hover:scale-[1.005] transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500/15 dark:bg-sky-500/20 text-sky-500 dark:text-sky-300 ring-1 ring-sky-400/20">
                             <i class="fa-solid fa-laptop-code"></i>
                         </span>
-
-                        <h3 class="font-mono text-lg font-semibold text-slate-700 dark:text-sky-300" data-translate="skills_frontend_title"></h3>
+                        <h3 class="font-mono text-lg font-semibold tracking-tight text-slate-800 dark:text-sky-300" data-translate="skills_frontend_title"></h3>
                     </div>
 
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-3 leading-relaxed"
-                       data-translate="skills_frontend_text"></p>
+                    <div class="my-4 h-px bg-slate-200/70 dark:bg-slate-700"></div>
 
-                    <ul class="space-y-1.5 text-[14px] text-slate-700 dark:text-slate-300 leading-snug">
-                        <li>React & component-based design</li>
-                        <li>Flutter (UI widgets, state management)</li>
-                        <li>jQuery (DOM manipulation)</li>
-                        <li>Semantic HTML & modern CSS</li>
-                        <li>Tailwind CSS</li>
+                    <p class="text-[13px] text-slate-600 dark:text-slate-400 leading-relaxed" data-translate="skills_frontend_text"></p>
+
+                    <ul class="mt-4 space-y-1.5 text-[13px] text-slate-700 dark:text-slate-300">
+                        <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400/70"></span>React & component-based design</li>
+                        <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400/70"></span>Flutter (UI widgets, state management)</li>
+                        <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400/70"></span>jQuery (DOM manipulation)</li>
+                        <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400/70"></span>Semantic HTML & modern CSS</li>
+                        <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400/70"></span>Tailwind CSS</li>
                     </ul>
                 </div>
 
-                <div class="group relative rounded-2xl p-6 bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-slate-200/70 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_0_25px_rgba(0,0,0,0.5)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.25)] dark:hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex h-10 w-10 justify-center items-center bg-emerald-500/15 dark:bg-emerald-500/20 rounded-xl text-emerald-500 dark:text-emerald-300 shadow-inner shadow-emerald-400/20">
+                <div class="skill-card group relative rounded-2xl p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.25)] dark:hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:-translate-y-1 hover:scale-[1.005] transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-500 dark:text-emerald-300 ring-1 ring-emerald-400/20">
                             <i class="fa-solid fa-server"></i>
                         </span>
-
-                        <h3 class="font-mono text-lg font-semibold text-slate-700 dark:text-emerald-300" data-translate="skills_backend_title"></h3>
+                        <h3 class="font-mono text-lg font-semibold tracking-tight text-slate-800 dark:text-emerald-300" data-translate="skills_backend_title"></h3>
                     </div>
 
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-3 leading-relaxed"
-                       data-translate="skills_backend_text"></p>
+                    <div class="my-4 h-px bg-slate-200/70 dark:bg-slate-700"></div>
 
-                    <ul class="space-y-1.5 text-[14px] text-slate-700 dark:text-slate-300 leading-snug">
+                    <p class="text-[13px] text-slate-600 dark:text-slate-400 leading-relaxed" data-translate="skills_backend_text"></p>
+
+                    <ul class="mt-4 space-y-1.5 text-[13px] text-slate-700 dark:text-slate-300">
                         <li>.NET / .NET Core (Web APIs, MVC)</li>
                         <li>Django & Django REST Framework</li>
                         <li>Node.js & Express.js</li>
@@ -242,68 +289,71 @@
                     </ul>
                 </div>
 
-                <div class="group relative rounded-2xl p-6 bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-slate-200/70 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_0_25px_rgba(0,0,0,0.5)] hover:shadow-[0_12px_40px_rgba(168,85,247,0.25)] dark:hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex h-10 w-10 justify-center items-center bg-purple-500/15 dark:bg-purple-500/20 rounded-xl text-purple-500 dark:text-purple-300 shadow-inner shadow-purple-400/20">
+                <div class="skill-card group relative rounded-2xl p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:shadow-[0_12px_40px_rgba(168,85,247,0.25)] dark:hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:-translate-y-1 hover:scale-[1.005] transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/15 dark:bg-purple-500/20 text-purple-500 dark:text-purple-300 ring-1 ring-purple-400/20">
                             <i class="fa-solid fa-screwdriver-wrench"></i>
                         </span>
-
-                        <h3 class="font-mono text-lg font-semibold text-slate-700 dark:text-purple-200" data-translate="skills_tools_title"></h3>
+                        <h3 class="font-mono text-lg font-semibold tracking-tight text-slate-800 dark:text-purple-200" data-translate="skills_tools_title"></h3>
                     </div>
 
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-3 leading-relaxed"
-                       data-translate="skills_tools_text"></p>
+                    <div class="my-4 h-px bg-slate-200/70 dark:bg-slate-700"></div>
 
-                    <ul class="space-y-1.5 text-[14px] text-slate-700 dark:text-slate-300 leading-snug">
-                        <li>Git & GitHub</li><li>Docker</li>
+                    <p class="text-[13px] text-slate-600 dark:text-slate-400 leading-relaxed" data-translate="skills_tools_text"></p>
+
+                    <ul class="mt-4 space-y-1.5 text-[13px] text-slate-700 dark:text-slate-300">
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
                         <li>VS Code, IntelliJ based IDEs</li>
-                        <li>Figma</li><li>Canva</li>
+                        <li>Figma, Canva</li>
                     </ul>
                 </div>
 
-                <div class="group relative rounded-2xl p-6 bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-slate-200/70 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_0_25px_rgba(0,0,0,0.5)] hover:shadow-[0_12px_40px_rgba(56,189,248,0.25)] dark:hover:shadow-[0_0_40px_rgba(56,189,248,0.4)] hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex h-10 w-10 justify-center items-center bg-sky-500/15 dark:bg-sky-500/20 rounded-xl text-sky-500 dark:text-sky-200 shadow-inner shadow-sky-400/20">
+                <div class="skill-card group relative rounded-2xl p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:shadow-[0_12px_40px_rgba(56,189,248,0.25)] dark:hover:shadow-[0_0_40px_rgba(56,189,248,0.4)] hover:-translate-y-1 hover:scale-[1.005] transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500/15 dark:bg-sky-500/20 text-sky-500 dark:text-sky-200 ring-1 ring-sky-400/20">
                             <i class="fa-solid fa-database"></i>
                         </span>
-
-                        <h3 class="font-mono text-lg font-semibold text-slate-700 dark:text-sky-200" data-translate="skills_databases_title"></h3>
+                        <h3 class="font-mono text-lg font-semibold tracking-tight text-slate-800 dark:text-sky-200" data-translate="skills_databases_title"></h3>
                     </div>
 
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-3 leading-relaxed"
-                       data-translate="skills_databases_text"></p>
+                    <div class="my-4 h-px bg-slate-200/70 dark:bg-slate-700"></div>
 
-                    <ul class="space-y-1.5 text-[14px] text-slate-700 dark:text-slate-300 leading-snug">
-                        <li>PostgreSQL</li><li>MySQL</li>
+                    <p class="text-[13px] text-slate-600 dark:text-slate-400 leading-relaxed" data-translate="skills_databases_text"></p>
+
+                    <ul class="mt-4 space-y-1.5 text-[13px] text-slate-700 dark:text-slate-300">
+                        <li>PostgreSQL, MySQL</li>
                         <li>Schema design & normalization</li>
                         <li>ORMs (Django ORM, JPA basics)</li>
                     </ul>
                 </div>
 
-                <div class="group relative rounded-2xl p-6 bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-slate-200/70 dark:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_0_25px_rgba(0,0,0,0.5)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.25)] dark:hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="flex h-10 w-10 justify-center items-center bg-emerald-400/15 dark:bg-emerald-400/20 rounded-xl text-emerald-400 dark:text-emerald-200 shadow-inner shadow-emerald-300/20">
+                <div class="skill-card group relative rounded-2xl p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.25)] dark:hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:-translate-y-1 hover:scale-[1.005] transition-all duration-300">
+                    <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-400/15 dark:bg-emerald-400/20 text-emerald-400 dark:text-emerald-200 ring-1 ring-emerald-300/20">
                             <i class="fa-solid fa-lightbulb"></i>
                         </span>
-
-                        <h3 class="font-mono text-lg font-semibold text-slate-700 dark:text-emerald-200" data-translate="skills_practices_title"></h3>
+                        <h3 class="font-mono text-lg font-semibold tracking-tight text-slate-800 dark:text-emerald-200" data-translate="skills_practices_title"></h3>
                     </div>
 
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-3 leading-relaxed"
-                       data-translate="skills_practices_text"></p>
+                    <div class="my-4 h-px bg-slate-200/70 dark:bg-slate-700"></div>
 
-                    <ul class="space-y-1.5 text-[14px] text-slate-700 dark:text-slate-300 leading-snug">
-                        <li>REST API design</li><li>MVC & layered architecture</li>
+                    <p class="text-[13px] text-slate-600 dark:text-slate-400 leading-relaxed" data-translate="skills_practices_text"></p>
+
+                    <ul class="mt-4 space-y-1.5 text-[13px] text-slate-700 dark:text-slate-300">
+                        <li>REST API design</li>
+                        <li>MVC & layered architecture</li>
                         <li>Clean Architecture (basics)</li>
                         <li>Version control & code review discipline</li>
                     </ul>
                 </div>
             </div>
+
         </section>
     </main>
 
-    <footer class="mt-auto border-t border-slate-800 bg-slate-900/40 backdrop-blur-xl">
-        <div class="w-full px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer class="h-[72px] border-t border-slate-800 bg-slate-900/40 backdrop-blur-xl">
+    <div class="w-full px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-6">
             <p class="text-sm text-slate-400 text-center md:text-left">
                 © <span id="year"></span> <span id="footerName"></span>. <span id="footerText"></span>
             </p>

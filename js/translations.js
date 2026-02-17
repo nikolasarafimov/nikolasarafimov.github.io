@@ -79,8 +79,8 @@ const translations = {
         p5_title: "Student Project Management System",
         p5_desc: "Full-stack Spring Boot web application for managing project proposals with role-based workflows, submission handling, and administrative validation.",
 
-        p6_title: "",
-        p6_desc: "",
+        p6_title: "Pet Adoption Platform",
+        p6_desc: "Pet Adoption Platform is a .NET Core app...",
 
 
         portfolio_live_demo: "Live Demo",
@@ -201,8 +201,8 @@ const translations = {
         p5_title: "Систем за управување со проекти",
         p5_desc: "Spring Boot веб-апликација за управување со проектни предлози со работни процеси базирани на улоги, ракување со поднесувања и административна валидација.",
 
-        p6_title: "",
-        p6_desc: "",
+        p6_title: "Платформа за вдомување миленици",
+        p6_desc: "Платформата за посвојување миленици е .NET Core апликација...",
 
         portfolio_live_demo: "Демо",
         portfolio_source_code: "Изворен код",

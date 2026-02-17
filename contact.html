@@ -30,14 +30,12 @@
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
-
         .lang-pop { animation: langPop 0.25s ease-out; }
         @keyframes langPop {
             0% { transform: scale(0.92); box-shadow: 0 0 0 rgba(52,211,153,0); }
             60% { transform: scale(1.06); box-shadow: 0 0 12px rgba(52,211,153,0.5); }
             100% { transform: scale(1); box-shadow: 0 0 0 rgba(52,211,153,0); }
         }
-
         .theme-icon-anim {
             transition: transform 0.5s ease, opacity 0.3s ease;
             transform-origin: center;
@@ -48,7 +46,6 @@
             0% { transform: rotate(-180deg); opacity: 0; }
             100% { transform: rotate(0deg); opacity: 1; }
         }
-
         #mobileMenu {
             max-height: 0;
             opacity: 0;
@@ -63,10 +60,8 @@
             pointer-events: auto;
             transform: translateY(0);
         }
-
         ::-webkit-scrollbar { display: none; }
         html, body { scrollbar-width: none; }
-
         :root:not(.dark) .code-area {
             background: radial-gradient(circle at 30% 40%, #ffffff 0%, #eef2ff 50%, #e2e8f0 100%) !important;
             border: 1px solid #d4d4d8 !important;
@@ -78,7 +73,6 @@
         :root:not(.dark) .code-area span.bg-red-500 { background: #ef4444 !important; }
         :root:not(.dark) .code-area span.bg-amber-400 { background: #f59e0b !important; }
         :root:not(.dark) .code-area span.bg-emerald-500 { background: #10b981 !important; }
-
         :root:not(.dark) footer {
             background: rgba(255,255,255,0.92) !important;
             border-top: 1px solid #e5e7eb !important;
@@ -87,13 +81,11 @@
         :root:not(.dark) footer p,
         :root:not(.dark) footer a { color: #475569 !important; }
         :root:not(.dark) footer a:hover { color: #10b981 !important; }
-
         @keyframes slowGlow {
             0%, 100% { opacity: 0.65; transform: scale(1); }
             50% { opacity: 0.9; transform: scale(1.03); }
         }
         .animate-slow-glow { animation: slowGlow 8s ease-in-out infinite; }
-
         @keyframes fadeInUp {
             from { opacity: 0; transform: translate3d(0, 24px, 0); }
             to   { opacity: 1; transform: translate3d(0, 0, 0); }
@@ -106,32 +98,25 @@
             from { opacity: 0; transform: translate3d(32px, 0, 0); }
             to   { opacity: 1; transform: translate3d(0, 0, 0); }
         }
-
         .animate-fade-left, .animate-fade-right, .animate-fade-up {
             will-change: transform, opacity;
         }
         .animate-fade-up    { opacity: 0; animation: fadeInUp 1s ease-out forwards; }
         .animate-fade-left  { opacity: 0; animation: fadeInLeft 1.1s ease-out forwards; }
         .animate-fade-right { opacity: 0; animation: fadeInRight 1.1s ease-out forwards; }
-
         @keyframes bgDrift {
             0%   { transform: translate(0, 0); opacity: 0.6; }
             50%  { transform: translate(-2%, -3%); opacity: 0.85; }
             100% { transform: translate(0, 0); opacity: 0.6; }
         }
         .animate-bg-drift { animation: bgDrift 18s ease-in-out infinite; }
-
         @keyframes cardPulse {
             0%, 100% { box-shadow: 0 0 0 rgba(52,211,153,0), 0 0 0 rgba(99,102,241,0); }
             50% { box-shadow: 0 0 24px rgba(52,211,153,0.08), 0 0 48px rgba(99,102,241,0.06); }
         }
-
-        /* Pulse-only class (use for right card or any element that DOESN'T also have a fade animation) */
         .animate-card-pulse {
             animation: cardPulse 10s ease-in-out infinite;
         }
-
-        /* ✅ FIX: fade-left + pulse combined (use for the LEFT card) */
         .animate-fade-left-pulse {
             opacity: 0;
             will-change: transform, opacity;
@@ -139,7 +124,6 @@
                     fadeInLeft 1.1s ease-out forwards,
                     cardPulse 10s ease-in-out infinite;
         }
-
         @keyframes floatY {
             0%, 100% { transform: translateY(0); }
             50%      { transform: translateY(-3px); }
@@ -366,7 +350,6 @@
             applyPlaceholderTranslations();
         }
 
-
         function applyPlaceholderTranslations() {
             document.querySelectorAll("[data-translate-placeholder]").forEach(el => {
                 const key = el.getAttribute("data-translate-placeholder");
@@ -376,7 +359,6 @@
                 }
             });
         }
-
 
         function updateLegalLinks() {
             const privacy = document.getElementById("privacyLink");

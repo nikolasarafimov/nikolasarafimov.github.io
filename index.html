@@ -91,9 +91,7 @@
                     #e2e8f0 100%
             ) !important;
             border: 1px solid #d4d4d8 !important;
-            box-shadow:
-                    0 4px 20px rgba(0,0,0,0.06),
-                    0 0 40px rgba(99,102,241,0.12);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06), 0 0 40px rgba(99,102,241,0.12);
             backdrop-filter: blur(12px);
         }
         :root:not(.dark) .code-area pre {
@@ -132,7 +130,6 @@
             from { opacity: 0; transform: translateX(30px); }
             to { opacity: 1; transform: translateX(0); }
         }
-
         .animate-fade-in-left {
             animation: fadeInLeft 0.9s ease-out forwards;
         }
@@ -143,11 +140,9 @@
             0%, 100% { opacity: 0.6; transform: scale(1); }
             50% { opacity: 0.9; transform: scale(1.03); }
         }
-
         .animate-glow {
             animation: glowPulse 6s ease-in-out infinite;
         }
-
         @media (max-width: 768px) {
             .animate-glow {
                 animation: none;
@@ -161,7 +156,7 @@
         <div class="w-full h-14 px-6 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-2 font-mono text-xl font-semibold leading-none select-none transition-all duration-300 hover:text-emerald-400 hover:scale-105 hover:[text-shadow:0_0_8px_rgba(52,211,153,0.8)]">
                 <span class="text-slate-400">&lt;</span>
-                <span class="text-emerald-400">Nikola Sarafimov</span>
+                <span data-translate="nav_logo" class="text-emerald-400"></span>
                 <span class="text-slate-400">/&gt;</span>
             </a>
 
@@ -253,9 +248,9 @@
                     </div>
 
                     <div class="flex flex-wrap items-center gap-6 text-sm text-slate-400">
-                        <span class="font-mono text-emerald-400" data-translate="tag1"></span>
-                        <span class="font-mono text-sky-400" data-translate="tag2"></span>
-                        <span class="font-mono text-purple-400" data-translate="tag3"></span>
+                        <span class="font-mono text-emerald-400">#coding</span>
+                        <span class="font-mono text-sky-400">#webdev</span>
+                        <span class="font-mono text-purple-400">#problem_solver</span>
                     </div>
                 </div>
 

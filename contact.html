@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="images/logo.png" />
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        (function() {
+        (function () {
             emailjs.init("hs1xmdJR6XVa9Qj2F");
         })();
     </script>
@@ -343,20 +343,17 @@
         function applyTranslations() {
             document.querySelectorAll("[data-translate]").forEach(el => {
                 const key = el.getAttribute("data-translate");
-                const value = translations[currentLang]?.[key];
+                const value = translations?.[currentLang]?.[key];
                 if (value) el.innerHTML = value;
             });
-
             applyPlaceholderTranslations();
         }
 
         function applyPlaceholderTranslations() {
             document.querySelectorAll("[data-translate-placeholder]").forEach(el => {
                 const key = el.getAttribute("data-translate-placeholder");
-                const value = translations[currentLang]?.[key];
-                if (value) {
-                    el.setAttribute("placeholder", value);
-                }
+                const value = translations?.[currentLang]?.[key];
+                if (value) el.setAttribute("placeholder", value);
             });
         }
 
@@ -377,20 +374,21 @@
         function updateLanguageButton() {
             const langBtn = document.getElementById("langToggle");
             const langBtnMobile = document.getElementById("langToggleMobile");
-            if (langBtn) langBtn.textContent = currentLang === "en" ? "MK" : "EN";
-            if (langBtnMobile) langBtnMobile.textContent = currentLang === "en" ? "MK" : "EN";
+            const text = currentLang === "en" ? "MK" : "EN";
+            if (langBtn) langBtn.textContent = text;
+            if (langBtnMobile) langBtnMobile.textContent = text;
         }
 
         function updateFooterName() {
             const footerName = document.getElementById("footerName");
-            if (footerName && translations[currentLang]) {
+            if (footerName && translations?.[currentLang]?.footer_name) {
                 footerName.textContent = translations[currentLang].footer_name;
             }
         }
 
         function updateFooterText() {
             const footerText = document.getElementById("footerText");
-            if (footerText && translations[currentLang]) {
+            if (footerText && translations?.[currentLang]?.footer_full) {
                 footerText.textContent = translations[currentLang].footer_full;
             }
         }
@@ -398,6 +396,7 @@
         function switchLanguage() {
             currentLang = currentLang === "en" ? "mk" : "en";
             localStorage.setItem("siteLang", currentLang);
+
             applyTranslations();
             updateLegalLinks();
             updateLanguageButton();
@@ -428,8 +427,8 @@
 
         const startYear = 2023;
         const currentYear = new Date().getFullYear();
-        document.getElementById("year").textContent =
-            currentYear === startYear ? `${startYear}` : `${startYear}–${currentYear}`;
+        const yearEl = document.getElementById("year");
+        if (yearEl) yearEl.textContent = currentYear === startYear ? `${startYear}` : `${startYear}–${currentYear}`;
 
         const navToggle = document.getElementById("navToggle");
         const mobileMenu = document.getElementById("mobileMenu");
@@ -479,10 +478,7 @@
             }
         }
 
-        if (localStorage.getItem("theme") === "light") {
-            root.classList.remove("dark");
-        }
-
+        if (localStorage.getItem("theme") === "light") root.classList.remove("dark");
         updateThemeIcons();
 
         function toggleTheme() {
@@ -498,8 +494,7 @@
             let path = window.location.pathname.split("/").pop().toLowerCase();
             if (path === "" || path === "/") path = "contact.html";
 
-            const links = document.querySelectorAll("a[href]");
-            links.forEach(link => {
+            document.querySelectorAll("a[href]").forEach(link => {
                 const href = link.getAttribute("href");
                 if (!href) return;
 
@@ -520,40 +515,71 @@
         }
         markActiveNav();
 
+        const EMAILJS_SERVICE_ID = "service_447qhx6";
+        const EMAILJS_TEMPLATE_ID = "template_jc07auf";
+
         const contactForm = document.getElementById("contactForm");
         const formStatus = document.getElementById("formStatus");
+
+        function setStatus(text, color) {
+            if (!formStatus) return;
+            formStatus.style.opacity = "1";
+            formStatus.style.color = color;
+            formStatus.textContent = text;
+        }
 
         if (contactForm && formStatus && window.emailjs) {
             const submitButton = contactForm.querySelector("button[type='submit']");
 
-            contactForm.addEventListener("submit", function(e) {
+            contactForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
 
-                const templateParams = {
-                    from_name: contactForm.name.value,
-                    from_email: contactForm.email.value,
-                    subject: contactForm.subject.value,
-                    message: contactForm.message.value
-                };
+                const name = contactForm.elements["name"]?.value.trim();
+                const email = contactForm.elements["email"]?.value.trim();
+                const subject = contactForm.elements["subject"]?.value.trim();
+                const message = contactForm.elements["message"]?.value.trim();
 
-                emailjs.send("service_3hiujsl", "template_qx6maeh", templateParams)
-                    .then(function(response) {
-                        console.log("SUCCESS!", response);
-                        formStatus.style.opacity = "1";
-                        formStatus.style.color = "#6ee7b7";
-                        formStatus.textContent = translations[currentLang].form_success_text;
-                        contactForm.reset();
+                if (!name || !email || !subject || !message) {
+                    setStatus("Please fill in all fields.", "#f87171");
+                    return;
+                }
 
-                        setTimeout(() => {
-                            formStatus.style.opacity = "0";
-                        }, 3500);
-                    }, function(error) {
-                        console.log("FAILED...", error);
-                        formStatus.style.opacity = "1";
-                        formStatus.style.color = "#f87171";
-                        formStatus.textContent = "Error sending message.";
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.style.opacity = "0.75";
+                    submitButton.style.cursor = "not-allowed";
+                }
+
+                try {
+                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                        name,
+                        email,
+                        subject,
+                        message
                     });
+
+                    const successText = translations?.[currentLang]?.form_success_text || "Message sent successfully!";
+                    setStatus(successText, "#6ee7b7");
+
+                    contactForm.reset();
+                    setTimeout(() => {
+                        if (formStatus) formStatus.style.opacity = "0";
+                    }, 3500);
+
+                } catch (err) {
+                    console.error("EmailJS FAILED:", err);
+                    setStatus("Error sending message. Please try again later.", "#f87171");
+                } finally {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.style.opacity = "1";
+                        submitButton.style.cursor = "pointer";
+                    }
+                }
             });
+        }
+        else {
+            console.warn("Contact form not initialized: missing form/status or EmailJS not loaded.");
         }
     </script>
 </body>

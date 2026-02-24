@@ -236,7 +236,7 @@
 
                     <p class="text-2xl sm:text-3xl font-mono text-slate-300 flex items-center gap-2">
                         <span class="text-emerald-400">&gt;</span>
-                        <span id="typingText" class="border-r border-emerald-400 pr-1"></span>
+                        <span id="typingText" class="pr-1"></span>
                     </p>
 
                     <p class="text-lg sm:text-xl text-slate-400 max-w-xl leading-relaxed"
@@ -315,6 +315,14 @@
     <script>
         let currentLang = localStorage.getItem("siteLang") || "en";
 
+        function updatePageTitle() {
+            document.title = translations?.[currentLang]?.page_home_title || "Nikola Sarafimov | Home";
+        }
+
+        function updateHtmlLang() {
+            document.documentElement.lang = currentLang === "mk" ? "mk" : "en";
+        }
+
         function applyTranslations() {
             document.querySelectorAll("[data-translate]").forEach(el => {
                 const key = el.getAttribute("data-translate");
@@ -356,6 +364,8 @@
             updateLanguageButton();
             updateFooterText();
             updateFooterName();
+            updateHtmlLang();
+            updatePageTitle();
 
             const langBtn = document.getElementById("langToggle");
             const langBtnMobile = document.getElementById("langToggleMobile");
@@ -389,6 +399,8 @@
         updateLanguageButton();
         updateFooterText();
         updateFooterName();
+        updateHtmlLang();
+        updatePageTitle();
 
         const langToggle = document.getElementById("langToggle");
         const langToggleMobile = document.getElementById("langToggleMobile");
@@ -508,9 +520,9 @@
             let path = window.location.pathname.split("/").pop().toLowerCase();
             if (path === "" || path === "/") path = "index.html";
 
-            const links = document.querySelectorAll("a[href]");
+            const navLinks = document.querySelectorAll("nav a[href], #mobileMenu a[href]");
 
-            links.forEach(link => {
+            navLinks.forEach(link => {
                 const href = link.getAttribute("href");
                 if (!href) return;
 
@@ -522,8 +534,7 @@
                             "font-semibold",
                             "[text-shadow:0_0_8px_rgba(52,211,153,0.9)]"
                         );
-                    }
-                    if (link.closest("#mobileMenu")) {
+                    } else {
                         link.classList.add("text-emerald-400", "font-semibold");
                     }
                 }

@@ -196,7 +196,7 @@
                 </nav>
 
                 <div class="flex items-center gap-4 pl-6 ml-6 border-l border-slate-700 h-full leading-none">
-                    <button id="themeToggle" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
+                    <button id="themeToggle" aria-label="Toggle theme" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
                         <svg id="iconMoon" class="w-7 h-7 theme-icon-anim" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
                         </svg>
@@ -205,7 +205,7 @@
                         </svg>
                     </button>
 
-                    <button id="langToggle" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
+                    <button id="langToggle" aria-label="Switch language" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
                         MK
                     </button>
                 </div>
@@ -231,7 +231,7 @@
             <a data-translate="nav_contact" href="contact.html" class="block py-1 hover:text-emerald-400 transition-colors"></a>
 
             <div class="flex items-center justify-between pt-3 border-t border-slate-300/30 dark:border-slate-700 leading-none">
-                <button id="themeToggleMobile" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
+                <button id="themeToggleMobile" aria-label="Toggle theme" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
                     <svg id="iconMoonMobile" class="w-7 h-7 theme-icon-anim" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
                     </svg>
@@ -240,7 +240,7 @@
                     </svg>
                 </button>
 
-                <button id="langToggleMobile" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
+                <button id="langToggleMobile" aria-label="Switch language" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
                     MK
                 </button>
             </div>
@@ -319,6 +319,10 @@
     <script>
         let currentLang = localStorage.getItem("siteLang") || "en";
 
+        function updateHtmlLang() {
+            document.documentElement.lang = currentLang === "mk" ? "mk" : "en";
+        }
+
         function applyTranslations() {
             document.querySelectorAll("[data-translate]").forEach(el => {
                 const key = el.getAttribute("data-translate");
@@ -367,6 +371,7 @@
             updateLanguageButton();
             updateFooterName();
             updateFooterText();
+            updateHtmlLang();
 
             const langBtn = document.getElementById("langToggle");
             const langBtnMobile = document.getElementById("langToggleMobile");
@@ -386,6 +391,7 @@
         updateLanguageButton();
         updateFooterName();
         updateFooterText();
+        updateHtmlLang();
 
         document.getElementById("langToggle")?.addEventListener("click", switchLanguage);
         document.getElementById("langToggleMobile")?.addEventListener("click", switchLanguage);
@@ -459,8 +465,9 @@
             let path = window.location.pathname.split("/").pop().toLowerCase();
             if (path === "" || path === "/") path = "biography.html";
 
-            const links = document.querySelectorAll("a[href]");
-            links.forEach(link => {
+            const navLinks = document.querySelectorAll("nav a[href], #mobileMenu a[href]");
+
+            navLinks.forEach(link => {
                 const href = link.getAttribute("href");
                 if (!href) return;
 
@@ -472,8 +479,7 @@
                             "font-semibold",
                             "[text-shadow:0_0_8px_rgba(52,211,153,0.9)]"
                         );
-                    }
-                    if (link.closest("#mobileMenu")) {
+                    } else {
                         link.classList.add("text-emerald-400", "font-semibold");
                     }
                 }

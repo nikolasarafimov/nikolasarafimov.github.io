@@ -7,6 +7,9 @@ const translations = {
         nav_portfolio: "Portfolio",
         nav_contact: "Contact",
 
+        /*---------------------------------------*/
+
+        page_home_title: "Nikola Sarafimov | Home",
         im_nikola: "I'm",
         nikola_name: "Nikola Sarafimov",
 
@@ -129,6 +132,9 @@ const translations = {
         nav_portfolio: "Портфолио",
         nav_contact: "Контакт",
 
+        /*---------------------------------------*/
+
+        page_home_title: "Никола Сарафимов | Почетна",
         im_nikola: "Јас сум",
         nikola_name: "Никола Сарафимов",
 

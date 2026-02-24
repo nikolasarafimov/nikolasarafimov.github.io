@@ -730,10 +730,7 @@
         document.getElementById("langToggle")?.addEventListener("click", switchLanguage);
         document.getElementById("langToggleMobile")?.addEventListener("click", switchLanguage);
 
-        const startYear = 2023;
-        const currentYear = new Date().getFullYear();
-        document.getElementById("year").textContent =
-            currentYear === startYear ? `${startYear}` : `${startYear}–${currentYear}`;
+        document.getElementById("year").textContent = new Date().getFullYear();
 
         const navToggle = document.getElementById("navToggle");
         const mobileMenu = document.getElementById("mobileMenu");

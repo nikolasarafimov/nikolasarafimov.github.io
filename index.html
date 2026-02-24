@@ -395,9 +395,7 @@
         if (langToggle) langToggle.onclick = switchLanguage;
         if (langToggleMobile) langToggleMobile.onclick = switchLanguage;
 
-        const startYear = 2023;
-        const currentYear = new Date().getFullYear();
-        document.getElementById("year").textContent = currentYear === startYear ? `${startYear}` : `${startYear}–${currentYear}`;
+        document.getElementById("year").textContent = new Date().getFullYear();
 
         const navToggle = document.getElementById("navToggle");
         const mobileMenu = document.getElementById("mobileMenu");

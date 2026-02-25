@@ -319,6 +319,10 @@
     <script>
         let currentLang = localStorage.getItem("siteLang") || "en";
 
+        function updatePageTitle() {
+            document.title = translations?.[currentLang]?.page_bio_title || "Nikola Sarafimov | Biography";
+        }
+
         function updateHtmlLang() {
             document.documentElement.lang = currentLang === "mk" ? "mk" : "en";
         }
@@ -372,6 +376,7 @@
             updateFooterName();
             updateFooterText();
             updateHtmlLang();
+            updatePageTitle();
 
             const langBtn = document.getElementById("langToggle");
             const langBtnMobile = document.getElementById("langToggleMobile");
@@ -392,6 +397,7 @@
         updateFooterName();
         updateFooterText();
         updateHtmlLang();
+        updatePageTitle();
 
         document.getElementById("langToggle")?.addEventListener("click", switchLanguage);
         document.getElementById("langToggleMobile")?.addEventListener("click", switchLanguage);

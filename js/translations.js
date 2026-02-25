@@ -26,6 +26,7 @@ const translations = {
 
         /*---------------------------------------*/
 
+        page_bio_title: "Nikola Sarafimov | Biography",
         bio_page_title: "Biography",
         bio_page_subtitle: "My journey in the world of programming",
         bio_title: "About Me",
@@ -151,6 +152,7 @@ const translations = {
 
         /*---------------------------------------*/
 
+        page_bio_title: "Никола Сарафимов | Биографија",
         bio_page_title: "Биографија",
         bio_page_subtitle: "Моето патување во светот на програмирањето",
         bio_title: "За мене",

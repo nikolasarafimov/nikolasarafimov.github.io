@@ -252,13 +252,13 @@
                     <div class="mt-6">
                         <p class="font-mono text-xs text-slate-500 mb-3" data-translate="contact_socials"></p>
                         <div class="flex items-center gap-4">
-                            <a href="https://github.com/nikolasarafimov" target="_blank" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
+                            <a href="https://github.com/nikolasarafimov" target="_blank" rel="noopener noreferrer" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
                                 <i class="fa-brands fa-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
+                            <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" rel="noopener noreferrer" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
                                 <i class="fa-brands fa-linkedin-in"></i>
                             </a>
-                            <a href="https://www.instagram.com/nikolasarafimov/" target="_blank" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
+                            <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" rel="noopener noreferrer" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                             <a href="mailto:sarafimov.nikola12345@gmail.com" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
@@ -285,23 +285,23 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-xs font-mono text-slate-400 mb-1" data-translate="form_name_label"></label>
-                                    <input type="text" name="name" data-translate-placeholder="form_name_placeholder" placeholder="Your name" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
+                                    <input type="text" name="name" autocomplete="name" required data-translate-placeholder="form_name_placeholder" placeholder="Your name" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
                                 </div>
 
                                 <div>
                                     <label class="block text-xs font-mono text-slate-400 mb-1" data-translate="form_email_label"></label>
-                                    <input type="email" name="email" data-translate-placeholder="form_email_placeholder" placeholder="your.email@example.com" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
+                                    <input type="email" name="email" autocomplete="email" required data-translate-placeholder="form_email_placeholder" placeholder="your.email@example.com" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-xs font-mono text-slate-400 mb-1" data-translate="form_subject_label"></label>
-                                <input type="text" name="subject" data-translate-placeholder="form_subject_placeholder" placeholder="Project collaboration" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
+                                <input type="text" name="subject" required data-translate-placeholder="form_subject_placeholder" placeholder="Project collaboration" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
                             </div>
 
                             <div>
                                 <label class="block text-xs font-mono text-slate-400 mb-1" data-translate="form_message_label"></label>
-                                <textarea name="message" rows="4" data-translate-placeholder="form_message_placeholder" placeholder="Hello Nikola, I would like to discuss..." class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"></textarea>
+                                <textarea name="message" autocomplete="off" required rows="4" data-translate-placeholder="form_message_placeholder" placeholder="Hello Nikola, I would like to discuss..." class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"></textarea>
                             </div>
 
                             <div class="pt-2">
@@ -328,10 +328,10 @@
                 <a data-translate="footer_privacy" id="privacyLink" href="privacy.html" class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"></a>
                 <a data-translate="footer_terms" id="termsLink" href="terms.html" class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"></a>
 
-                <a href="https://github.com/nikolasarafimov" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                <a href="mailto:sarafimov.nikola12345@gmail.com" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/nikolasarafimov" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:sarafimov.nikola12345@gmail.com" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </footer>
@@ -339,6 +339,10 @@
     <script src="js/translations.js"></script>
     <script>
         let currentLang = localStorage.getItem("siteLang") || "en";
+
+        function updatePageTitle() {
+            document.title = translations?.[currentLang]?.page_contact_title || "Nikola Sarafimov | Contact";
+        }
 
         function applyTranslations() {
             document.querySelectorAll("[data-translate]").forEach(el => {
@@ -402,6 +406,7 @@
             updateLanguageButton();
             updateFooterName();
             updateFooterText();
+            updatePageTitle();
 
             const langBtn = document.getElementById("langToggle");
             const langBtnMobile = document.getElementById("langToggleMobile");
@@ -421,6 +426,7 @@
         updateLanguageButton();
         updateFooterName();
         updateFooterText();
+        updatePageTitle();
 
         document.getElementById("langToggle")?.addEventListener("click", switchLanguage);
         document.getElementById("langToggleMobile")?.addEventListener("click", switchLanguage);
@@ -536,8 +542,11 @@
                 const subject = contactForm.elements["subject"]?.value.trim();
                 const message = contactForm.elements["message"]?.value.trim();
 
+                const fillAll = translations?.[currentLang]?.form_error_fill_all || "Please fill in all fields.";
+                const sendError = translations?.[currentLang]?.form_error_send || "Error sending message. Please try again later.";
+
                 if (!name || !email || !subject || !message) {
-                    setStatus("Please fill in all fields.", "#f87171");
+                    setStatus(fillAll, "#f87171");
                     return;
                 }
 
@@ -565,7 +574,7 @@
 
                 } catch (err) {
                     console.error("EmailJS FAILED:", err);
-                    setStatus("Error sending message. Please try again later.", "#f87171");
+                    setStatus(sendError, "#f87171");
                 } finally {
                     if (submitButton) {
                         submitButton.disabled = false;

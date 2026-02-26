@@ -131,7 +131,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 h-screen overflow-hidden flex flex-col transition-colors duration-500">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-500">
 
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-slate-950/80 backdrop-blur-xl shadow-md border-b-0 h-14">
         <div class="w-full h-14 px-6 flex items-center justify-between">
@@ -372,6 +372,10 @@
     <script>
         let currentLang = localStorage.getItem("siteLang") || "en";
 
+        function updatePageTitle() {
+            document.title = translations?.[currentLang]?.page_skills_title || "Nikola Sarafimov | Skills";
+        }
+
         function applyTranslations() {
             document.querySelectorAll("[data-translate]").forEach(el => {
                 const key = el.getAttribute("data-translate");
@@ -420,6 +424,7 @@
             updateLanguageButton();
             updateFooterName();
             updateFooterText();
+            updatePageTitle();
 
             const langBtn = document.getElementById("langToggle");
             const langBtnMobile = document.getElementById("langToggleMobile");
@@ -439,6 +444,7 @@
         updateLanguageButton();
         updateFooterName();
         updateFooterText();
+        updatePageTitle();
 
         document.getElementById("langToggle")?.addEventListener("click", switchLanguage);
         document.getElementById("langToggleMobile")?.addEventListener("click", switchLanguage);

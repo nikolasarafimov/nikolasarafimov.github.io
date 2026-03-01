@@ -331,7 +331,7 @@
                 <a href="https://github.com/nikolasarafimov" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                <a href="mailto:sarafimov.nikola12345@gmail.com" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                <a href="mailto:sarafimov.nikola12345@gmail.com" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </footer>
@@ -342,6 +342,10 @@
 
         function updatePageTitle() {
             document.title = translations?.[currentLang]?.page_contact_title || "Nikola Sarafimov | Contact";
+        }
+
+        function updateHtmlLang() {
+            document.documentElement.lang = currentLang === "mk" ? "mk" : "en";
         }
 
         function applyTranslations() {
@@ -384,17 +388,13 @@
         }
 
         function updateFooterName() {
-            const footerName = document.getElementById("footerName");
-            if (footerName && translations?.[currentLang]?.footer_name) {
-                footerName.textContent = translations[currentLang].footer_name;
-            }
+            const el = document.getElementById("footerName");
+            if (el) el.textContent = translations?.[currentLang]?.footer_name || "Nikola Sarafimov";
         }
 
         function updateFooterText() {
-            const footerText = document.getElementById("footerText");
-            if (footerText && translations?.[currentLang]?.footer_full) {
-                footerText.textContent = translations[currentLang].footer_full;
-            }
+            const el = document.getElementById("footerText");
+            if (el) el.textContent = translations?.[currentLang]?.footer_full || "All rights reserved.";
         }
 
         function switchLanguage() {
@@ -407,6 +407,7 @@
             updateFooterName();
             updateFooterText();
             updatePageTitle();
+            updateHtmlLang();
 
             const langBtn = document.getElementById("langToggle");
             const langBtnMobile = document.getElementById("langToggleMobile");
@@ -427,6 +428,7 @@
         updateFooterName();
         updateFooterText();
         updatePageTitle();
+        updateHtmlLang();
 
         document.getElementById("langToggle")?.addEventListener("click", switchLanguage);
         document.getElementById("langToggleMobile")?.addEventListener("click", switchLanguage);

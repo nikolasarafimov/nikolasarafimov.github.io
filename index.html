@@ -303,10 +303,10 @@
                 <a data-translate="footer_privacy" id="privacyLink" href="privacy.html" class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"></a>
                 <a data-translate="footer_terms" id="termsLink" href="terms.html" class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"></a>
 
-                <a href="https://github.com/nikolasarafimov" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                <a href="mailto:sarafimov.nikola12345@gmail.com" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/nikolasarafimov" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:sarafimov.nikola12345@gmail.com" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </footer>
@@ -326,9 +326,8 @@
         function applyTranslations() {
             document.querySelectorAll("[data-translate]").forEach(el => {
                 const key = el.getAttribute("data-translate");
-                if (translations[currentLang][key]) {
-                    el.innerHTML = translations[currentLang][key];
-                }
+                const value = translations?.[currentLang]?.[key];
+                if (value) el.innerHTML = value;
             });
         }
 
@@ -360,6 +359,12 @@
             localStorage.setItem("siteLang", currentLang);
             applyTranslations();
             updateTypingPhrases();
+
+            phraseIndex = 0;
+            charIndex = 0;
+            isDeleting = false;
+            if (typingText) typingText.textContent = "";
+
             updateLegalLinks();
             updateLanguageButton();
             updateFooterText();
@@ -382,16 +387,12 @@
 
         function updateFooterName() {
             const footerName = document.getElementById("footerName");
-            if (footerName) {
-                footerName.textContent = translations[currentLang].footer_name;
-            }
+            if (footerName) footerName.textContent = translations?.[currentLang]?.footer_name || "Nikola Sarafimov";
         }
 
         function updateFooterText() {
             const footerText = document.getElementById("footerText");
-            if (footerText) {
-                footerText.textContent = translations[currentLang].footer_full;
-            }
+            if (footerText) footerText.textContent = translations?.[currentLang]?.footer_full || "All rights reserved.";
         }
 
         applyTranslations();
@@ -430,13 +431,8 @@
         const typingText = document.getElementById("typingText");
 
         function updateTypingPhrases() {
-            phrases = [
-                translations[currentLang].typing1,
-                translations[currentLang].typing2,
-                translations[currentLang].typing3,
-                translations[currentLang].typing4,
-                translations[currentLang].typing5,
-            ];
+            const t = translations?.[currentLang] || {};
+            phrases = [t.typing1, t.typing2, t.typing3, t.typing4, t.typing5].filter(Boolean);
         }
 
         updateTypingPhrases();

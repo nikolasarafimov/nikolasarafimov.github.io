@@ -287,10 +287,7 @@
                     <div class="absolute -inset-2 bg-gradient-to-tr from-emerald-500/25 via-sky-500/20 to-purple-500/25 blur-2xl opacity-80 animate-slow-glow"></div>
 
                     <div class="relative w-full h-full min-h-[420px] rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 shadow-2xl group flex items-center justify-center">
-                        <img
-                                src="images/image.jpeg"
-                                class="w-full h-full object-cover object-[50%_20%] select-none transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                        />
+                        <img src="images/image.jpeg" alt="Nikola Sarafimov" class="w-full h-full object-cover object-[50%_20%] select-none transition-transform duration-700 ease-out group-hover:scale-[1.02]"/>
                         <span class="absolute bottom-3 right-4 bg-emerald-500/20 text-emerald-300 text-[11px] tracking-wide font-mono px-3 py-1 rounded-lg border border-emerald-500/30 backdrop-blur-md shadow-[0_0_10px_rgba(52,211,153,0.25)]">
                             Developer.exe
                         </span>
@@ -310,10 +307,10 @@
                 <a data-translate="footer_privacy" id="privacyLink" href="privacy.html" class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"></a>
                 <a data-translate="footer_terms" id="termsLink" href="terms.html" class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"></a>
 
-                <a href="https://github.com/nikolasarafimov" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                <a href="mailto:sarafimov.nikola12345@gmail.com" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/nikolasarafimov" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:sarafimov.nikola12345@gmail.com" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </footer>
@@ -333,9 +330,8 @@
         function applyTranslations() {
             document.querySelectorAll("[data-translate]").forEach(el => {
                 const key = el.getAttribute("data-translate");
-                if (translations[currentLang][key]) {
-                    el.innerHTML = translations[currentLang][key];
-                }
+                const value = translations?.[currentLang]?.[key];
+                if (value) el.innerHTML = value;
             });
         }
 
@@ -362,12 +358,12 @@
 
         function updateFooterName() {
             const footerName = document.getElementById("footerName");
-            if (footerName) footerName.textContent = translations[currentLang].footer_name;
+            if (footerName) footerName.textContent = translations?.[currentLang]?.footer_name || "Nikola Sarafimov";
         }
 
         function updateFooterText() {
             const footerText = document.getElementById("footerText");
-            if (footerText) footerText.textContent = translations[currentLang].footer_full;
+            if (footerText) footerText.textContent = translations?.[currentLang]?.footer_full || "All rights reserved.";
         }
 
         function switchLanguage() {

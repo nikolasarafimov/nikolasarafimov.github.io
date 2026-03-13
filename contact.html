@@ -597,10 +597,10 @@
 
                 try {
                     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-                        name: name,
-                        email: email,
-                        subject: subject,
-                        message: message,
+                        name,
+                        email,
+                        subject,
+                        message
                     });
 
                     const successText = translations?.[currentLang]?.form_success_text || "Message sent successfully!";
@@ -617,7 +617,7 @@
                     console.error("EmailJS FAILED status:", err?.status);
                     console.error("EmailJS FAILED text:", err?.text);
                     console.error("EmailJS FAILED message:", err?.message);
-                    console.error("EmailJS FAILED full:", JSON.stringify(err, null, 2));
+                    console.error("EmailJS FAILED full object:", err);
                     setStatus(sendError, "#f87171");
                 } finally {
                     if (submitButton) {

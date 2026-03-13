@@ -16,15 +16,9 @@
     <link rel="icon" type="image/png" href="images/logo.png" />
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        (function () {
-            emailjs.init({
-                publicKey: "B-pnRkUVxBKprhUUj",
-                limitRate: {
-                    id: "contact-form",
-                    throttle: 10000
-                }
-            });
-        })();
+        window.addEventListener("load", function () {
+            emailjs.init("B-pnRkUVxBKprhUUj");
+        });
     </script>
     <style>
         .animated-divider {

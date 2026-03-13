@@ -576,13 +576,6 @@
                     return;
                 }
 
-                const lastSend = localStorage.getItem("lastMessageTime");
-
-                if (lastSend && Date.now() - Number(lastSend) < 60000) {
-                    setStatus(waitMessage, "#f87171");
-                    return;
-                }
-
                 if (submitButton) {
                     submitButton.disabled = true;
                     submitButton.style.opacity = "0.75";

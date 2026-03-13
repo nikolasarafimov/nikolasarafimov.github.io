@@ -13,10 +13,10 @@ const translations = {
         im_nikola: "I'm",
         nikola_name: "Nikola Sarafimov",
 
-        typing1: "Computer Science Student",
-        typing2: "Web Development Enthusiast",
+        typing1: "CS Student",
+        typing2: "Web Dev Enthusiast",
         typing3: "Problem Solver",
-        typing4: "Code Enthusiast",
+        typing4: "Code Lover",
         typing5: "Lifelong Learner",
 
         about_me: "A computer science & software engineering student focused on building modern web applications, solving problems, and continuously learning new technologies.",
@@ -147,8 +147,8 @@ const translations = {
         typing1: "Студент по компјутерски науки",
         typing2: "Ентузијаст за веб развој",
         typing3: "Решавач на проблеми",
-        typing4: "Љубител на кодирање",
-        typing5: "Вечен ученик на нови работи",
+        typing4: "Љубител на код",
+        typing5: "Доживотен ученик",
 
         about_me: "Студент по компјутерски науки и софтверско инженерство фокусиран на создавање модерни веб апликации, решавање проблеми и континуирано учење нови технологии.",
 

@@ -597,10 +597,11 @@
 
                 try {
                     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-                        name,
-                        email,
-                        subject,
-                        message
+                        name: name,
+                        email: email,
+                        subject: subject,
+                        message: message,
+                        reply_to: email
                     });
 
                     const successText = translations?.[currentLang]?.form_success_text || "Message sent successfully!";
@@ -614,7 +615,12 @@
                     }, 3500);
 
                 } catch (err) {
-                    console.error("EmailJS FAILED:", err);
+                    console.error("EmailJS FAILED:", {
+                        status: err?.status,
+                        text: err?.text,
+                        message: err?.message,
+                        full: err
+                    });
                     setStatus(sendError, "#f87171");
                 } finally {
                     if (submitButton) {

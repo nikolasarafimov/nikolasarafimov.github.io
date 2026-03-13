@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Nikola Sarafimov | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme !== "light") {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script>tailwind.config = {darkMode: "class"};</script>
@@ -61,6 +67,7 @@
             pointer-events: none;
             overflow: hidden;
             transform-origin: top;
+            transform: translateY(-6px);
             transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.3s ease;
         }
         #mobileMenu.menu-open {
@@ -75,8 +82,6 @@
         .code-area {
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
-        }
-        .code-area {
             transition: transform 0.4s ease;
         }
         .code-area:hover {
@@ -185,7 +190,7 @@
                 </div>
             </div>
 
-            <button id="navToggle" class="lg:hidden p-2 rounded-lg border border-slate-700 text-slate-200 flex items-center justify-center leading-none">
+            <button id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden p-2 rounded-lg border border-slate-700 text-slate-200 flex items-center justify-center leading-none">
                 <svg id="navIconOpen" class="h-6 w-6" fill="none" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
@@ -265,7 +270,7 @@
                                 <span class="w-3.5 h-3.5 rounded-full bg-emerald-500"></span>
                             </div>
                             <span class="text-xs text-slate-500 font-mono">
-                                portfolio/home.jsx
+                                portfolio/home.html
                             </span>
                         </div>
                         <div class="max-w-full">
@@ -303,10 +308,10 @@
                 <a data-translate="footer_privacy" id="privacyLink" href="privacy.html" class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"></a>
                 <a data-translate="footer_terms" id="termsLink" href="terms.html" class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"></a>
 
-                <a href="https://github.com/nikolasarafimov" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                <a href="mailto:sarafimov.nikola12345@gmail.com" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/nikolasarafimov" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                <a href="mailto:sarafimov.nikola12345@gmail.com" aria-label="Email" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
             </div>
         </div>
     </footer>
@@ -314,6 +319,10 @@
     <script src="js/translations.js"></script>
     <script>
         let currentLang = localStorage.getItem("siteLang") || "en";
+
+        if (typeof translations === "undefined") {
+            console.error("translations.js failed to load.");
+        }
 
         function updatePageTitle() {
             document.title = translations?.[currentLang]?.page_home_title || "Nikola Sarafimov | Home";
@@ -327,7 +336,7 @@
             document.querySelectorAll("[data-translate]").forEach(el => {
                 const key = el.getAttribute("data-translate");
                 const value = translations?.[currentLang]?.[key];
-                if (value) el.innerHTML = value;
+                if (value) el.textContent = value;
             });
         }
 
@@ -417,11 +426,21 @@
 
         if (navToggle && mobileMenu && navIconOpen && navIconClose) {
             navToggle.addEventListener("click", () => {
-                mobileMenu.classList.toggle("menu-open");
+                const isOpen = mobileMenu.classList.toggle("menu-open");
                 navIconOpen.classList.toggle("hidden");
                 navIconClose.classList.toggle("hidden");
+                navToggle.setAttribute("aria-expanded", String(isOpen));
             });
         }
+
+        document.querySelectorAll("#mobileMenu a").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("menu-open");
+                navIconOpen.classList.remove("hidden");
+                navIconClose.classList.add("hidden");
+                navToggle.setAttribute("aria-expanded", "false");
+            });
+        });
 
         let phrases = [];
         let phraseIndex = 0;
@@ -501,10 +520,6 @@
             root.classList.toggle("dark");
             localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
             updateThemeIcons();
-        }
-
-        if (localStorage.getItem("theme") === "light") {
-            root.classList.remove("dark");
         }
 
         updateThemeIcons();

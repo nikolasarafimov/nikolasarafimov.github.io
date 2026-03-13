@@ -119,6 +119,8 @@ const translations = {
 
         form_button_text: "Execute sendMessage()",
         form_success_text: "Message sent successfully. I’ll get back to you soon! :)",
+        form_error_short_message: "Message is too short.",
+        form_error_wait: "Please wait before sending another message.",
 
         /*---------------------------------------*/
 
@@ -247,6 +249,8 @@ const translations = {
 
         form_button_text: "Испрати порака",
         form_success_text: "Пораката е успешно испратена. Ќе ви одговорам наскоро! :)",
+        form_error_short_message: "Пораката е премногу кратка.",
+        form_error_wait: "Ве молиме почекајте пред да испратите друга порака.",
 
         /*---------------------------------------*/
 

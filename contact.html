@@ -17,7 +17,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         (function () {
-            emailjs.init("hs1xmdJR6XVa9Qj2F");
+            emailjs.init({
+                publicKey: "hs1xmdJR6XVa9Qj2F",
+                limitRate: {
+                    id: "contact-form",
+                    throttle: 10000
+                }
+            });
         })();
     </script>
     <style>
@@ -235,9 +241,9 @@
                     </div>
 
                     <div class="mt-6 rounded-xl px-4 py-3 font-mono text-[11px] bg-slate-100 border border-slate-300 text-slate-700 dark:bg-slate-900/80 dark:border-slate-800 dark:text-slate-300">
-
-                    <span class="text-sky-300">const</span> <span class="text-emerald-300">status</span> =
-                        <span class="text-amber-300" data-translate="contact_status"></span>;
+                        <span class="text-sky-600 dark:text-sky-300">const</span>
+                        <span class="text-emerald-600 dark:text-emerald-300">status</span> =
+                        <span class="text-amber-600 dark:text-amber-300" data-translate="contact_status"></span>;
                     </div>
 
                     <div class="mt-6">
@@ -264,7 +270,8 @@
                             <span class="text-slate-500">send-message.ts</span>
                         </div>
 
-                        <form id="contactForm" class="space-y-4">
+                        <form id="contactForm" class="space-y-4" novalidate>
+                            <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-xs font-mono text-slate-400 mb-1" data-translate="form_name_label"></label>
@@ -549,6 +556,7 @@
             contactForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
 
+                const honeypot = contactForm.elements["company"]?.value;
                 const name = contactForm.elements["name"]?.value.trim();
                 const email = contactForm.elements["email"]?.value.trim();
                 const subject = contactForm.elements["subject"]?.value.trim();
@@ -557,8 +565,27 @@
                 const fillAll = translations?.[currentLang]?.form_error_fill_all || "Please fill in all fields.";
                 const sendError = translations?.[currentLang]?.form_error_send || "Error sending message. Please try again later.";
 
+                const shortMessage = translations?.[currentLang]?.form_error_short_message || "Message is too short.";
+                const waitMessage = translations?.[currentLang]?.form_error_wait || "Please wait before sending another message.";
+
+                if (honeypot) {
+                    return;
+                }
+
                 if (!name || !email || !subject || !message) {
                     setStatus(fillAll, "#f87171");
+                    return;
+                }
+
+                if (message.length < 10) {
+                    setStatus(shortMessage, "#f87171");
+                    return;
+                }
+
+                const lastSend = localStorage.getItem("lastMessageTime");
+
+                if (lastSend && Date.now() - Number(lastSend) < 60000) {
+                    setStatus(waitMessage, "#f87171");
                     return;
                 }
 
@@ -579,7 +606,9 @@
                     const successText = translations?.[currentLang]?.form_success_text || "Message sent successfully!";
                     setStatus(successText, "#6ee7b7");
 
+                    localStorage.setItem("lastMessageTime", Date.now());
                     contactForm.reset();
+
                     setTimeout(() => {
                         if (formStatus) formStatus.style.opacity = "0";
                     }, 3500);

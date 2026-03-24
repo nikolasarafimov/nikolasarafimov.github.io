@@ -77,10 +77,10 @@ const translations = {
         p2_desc: "Interactive, open-source web dictionary with 1.3M+ Macedonian word forms, featuring morphological tagging and fast in-browser search.",
 
         p3_title: "Movie Ticket MVC Application",
-        p3_desc: "ASP.NET MVC web application for cinema ticket management with authentication, role-based access, and full CRUD functionality.",
+        p3_desc: "ASP.NET MVC web application for managing and purchasing cinema ticket management with authentication, role-based access, and full CRUD functionality.",
 
         p4_title: "CDN Simulator",
-        p4_desc: "Full-stack simulation of a Content Delivery Network (CDN) implementing caching strategies, routing logic, and distributed request handling.",
+        p4_desc: "Full-stack simulation of a Content Delivery Network (CDN) implementing caching strategies, routing logic, authentication and distributed request handling.",
 
         p5_title: "Student Project Management System",
         p5_desc: "Full-stack Spring Boot web application for managing project proposals with role-based workflows, submission handling, and administrative validation.",
@@ -208,7 +208,7 @@ const translations = {
         p2_desc: "Интерактивен веб-речник со отворен код со над 1,3 милиони македонски зборовни форми, со морфолошко означување и брзо пребарување во прелистувач.",
 
         p3_title: "Апликација за купување билети",
-        p3_desc: "ASP.NET MVC веб-апликација за управување со билети за кино со автентикација, пристап базиран на улоги и целосна CRUD функционалност.",
+        p3_desc: "ASP.NET MVC веб-апликација за управување и купување билети за кино со автентикација, пристап базиран на улоги и целосна CRUD функционалност.",
 
         p4_title: "CDN Симулатор",
         p4_desc: "Целосна симулација на мрежа за испорака на содржини (CDN) што имплементира стратегии за кеширање, логика за рутирање и дистрибуирано ракување со барања.",

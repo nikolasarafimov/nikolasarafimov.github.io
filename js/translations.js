@@ -74,7 +74,7 @@ const translations = {
         p1_desc: "End-to-end AI pipeline for processing blood test documents (PDFs/images), including OCR, anonymization, structured extraction, and LOINC enrichment.",
 
         p2_title: "Digital Macedonian Dictionary",
-        p2_desc: "Open-source web dictionary with 1.3M+ Macedonian word forms, featuring morphological tagging and fast in-browser search.",
+        p2_desc: "Interactive, open-source web dictionary with 1.3M+ Macedonian word forms, featuring morphological tagging and fast in-browser search.",
 
         p3_title: "Movie Ticket MVC Application",
         p3_desc: "ASP.NET MVC web application for cinema ticket management with authentication, role-based access, and full CRUD functionality.",

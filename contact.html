@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Nikola Sarafimov | Contact</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme !== "light") {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script>tailwind.config = { darkMode: "class" };</script>
     <link rel="icon" type="image/png" href="images/logo.png" />
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        (function () {
-            emailjs.init("hs1xmdJR6XVa9Qj2F");
-        })();
+        window.addEventListener("load", function () {
+            emailjs.init("B-pnRkUVxBKprhUUj");
+        });
     </script>
     <style>
         .animated-divider {
@@ -52,6 +58,7 @@
             pointer-events: none;
             overflow: hidden;
             transform-origin: top;
+            transform: translateY(-6px);
             transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.3s ease;
         }
         #mobileMenu.menu-open {
@@ -62,17 +69,6 @@
         }
         ::-webkit-scrollbar { display: none; }
         html, body { scrollbar-width: none; }
-        :root:not(.dark) .code-area {
-            background: radial-gradient(circle at 30% 40%, #ffffff 0%, #eef2ff 50%, #e2e8f0 100%) !important;
-            border: 1px solid #d4d4d8 !important;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06), 0 0 40px rgba(99,102,241,0.12);
-            backdrop-filter: blur(12px);
-        }
-        :root:not(.dark) .code-area pre { color: #1f2937 !important; }
-        :root:not(.dark) .code-area .text-slate-500 { color: #64748b !important; }
-        :root:not(.dark) .code-area span.bg-red-500 { background: #ef4444 !important; }
-        :root:not(.dark) .code-area span.bg-amber-400 { background: #f59e0b !important; }
-        :root:not(.dark) .code-area span.bg-emerald-500 { background: #10b981 !important; }
         :root:not(.dark) footer {
             background: rgba(255,255,255,0.92) !important;
             border-top: 1px solid #e5e7eb !important;
@@ -124,11 +120,6 @@
                     fadeInLeft 1.1s ease-out forwards,
                     cardPulse 10s ease-in-out infinite;
         }
-        @keyframes floatY {
-            0%, 100% { transform: translateY(0); }
-            50%      { transform: translateY(-3px); }
-        }
-        .animate-float { animation: floatY 6s ease-in-out infinite; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-500 overflow-x-hidden">
@@ -150,7 +141,7 @@
                 </nav>
 
                 <div class="flex items-center gap-4 pl-6 ml-6 border-l border-slate-700 h-full leading-none">
-                    <button id="themeToggle" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
+                    <button id="themeToggle" aria-label="Toggle theme" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
                         <svg id="iconMoon" class="w-7 h-7 theme-icon-anim" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
                         </svg>
@@ -159,13 +150,13 @@
                         </svg>
                     </button>
 
-                    <button id="langToggle" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
+                    <button id="langToggle" aria-label="Switch language" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
                         MK
                     </button>
                 </div>
             </div>
 
-            <button id="navToggle" class="lg:hidden p-2 rounded-lg border border-slate-700 text-slate-200 flex items-center justify-center leading-none">
+            <button id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden p-2 rounded-lg border border-slate-700 text-slate-200 flex items-center justify-center leading-none">
                 <svg id="navIconOpen" class="h-6 w-6" fill="none" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
@@ -185,7 +176,7 @@
             <a data-translate="nav_contact" href="contact.html" class="block py-1 hover:text-emerald-400 transition-colors"></a>
 
             <div class="flex items-center justify-between pt-3 border-t border-slate-300/30 dark:border-slate-700 leading-none">
-                <button id="themeToggleMobile" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
+                <button id="themeToggleMobile" aria-label="Toggle theme" class="relative w-9 h-9 rounded-full flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-emerald-500/15 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] hover:scale-110">
                     <svg id="iconMoonMobile" class="w-7 h-7 theme-icon-anim" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
                     </svg>
@@ -194,14 +185,14 @@
                     </svg>
                 </button>
 
-                <button id="langToggleMobile" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
+                <button id="langToggleMobile" aria-label="Switch language" class="px-4 py-1.5 font-semibold rounded-full bg-slate-900/80 text-slate-300 border border-slate-500/60 transition-all duration-300 relative overflow-hidden hover:text-slate-900 hover:bg-emerald-400 hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.55)] hover:-translate-y-0.5 leading-none select-none">
                     MK
                 </button>
             </div>
         </div>
     </header>
 
-    <main class="pt-[80px] md:pt-28 lg:pt-24 xl:pt-24 pb-16 flex-grow select-none overflow-x-hidden relative">
+    <main class="pt-[80px] md:pt-28 lg:pt-24 xl:pt-24 pb-16 flex-grow overflow-x-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(52,211,153,0.08),transparent_55%)] pointer-events-none animate-bg-drift"></div>
         <section class="max-w-[1200px] mx-auto px-6 sm:px-8">
             <div class="text-center mb-10 animate-fade-up">
@@ -243,27 +234,19 @@
                         </div>
                     </div>
 
-                    <div class="mt-6 rounded-xl px-4 py-3 font-mono text-[11px] bg-slate-100 border border-slate-300 text-slate-700 dark:bg-slate-900/80 dark:border-slate-800 dark:text-slate-300 animate-float">
-
-                    <span class="text-sky-300">const</span> <span class="text-emerald-300">status</span> =
-                        <span class="text-amber-300" data-translate="contact_status"></span>;
+                    <div class="mt-6 rounded-xl px-4 py-3 font-mono text-[11px] bg-slate-100 border border-slate-300 text-slate-700 dark:bg-slate-900/80 dark:border-slate-800 dark:text-slate-300">
+                        <span class="text-sky-600 dark:text-sky-300">const</span>
+                        <span class="text-emerald-600 dark:text-emerald-300">status</span> =
+                        <span class="text-amber-600 dark:text-amber-300" data-translate="contact_status"></span>;
                     </div>
 
                     <div class="mt-6">
                         <p class="font-mono text-xs text-slate-500 mb-3" data-translate="contact_socials"></p>
                         <div class="flex items-center gap-4">
-                            <a href="https://github.com/nikolasarafimov" target="_blank" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
-                                <i class="fa-brands fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://www.instagram.com/nikolasarafimov/" target="_blank" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-                            <a href="mailto:sarafimov.nikola12345@gmail.com" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800">
-                                <i class="fa-solid fa-envelope"></i>
-                            </a>
+                            <a href="https://github.com/nikolasarafimov" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                            <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                            <a href="mailto:sarafimov.nikola12345@gmail.com" aria-label="Email" class="h-10 w-10 rounded-xl flex items-center justify-center transition bg-white text-slate-700 border border-slate-300 hover:text-emerald-400 hover:bg-white hover:border-emerald-300 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -281,27 +264,28 @@
                             <span class="text-slate-500">send-message.ts</span>
                         </div>
 
-                        <form id="contactForm" class="space-y-4">
+                        <form id="contactForm" class="space-y-4" novalidate>
+                            <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-xs font-mono text-slate-400 mb-1" data-translate="form_name_label"></label>
-                                    <input type="text" name="name" data-translate-placeholder="form_name_placeholder" placeholder="Your name" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
+                                    <input type="text" name="name" autocomplete="name" required data-translate-placeholder="form_name_placeholder" placeholder="Your name" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
                                 </div>
 
                                 <div>
                                     <label class="block text-xs font-mono text-slate-400 mb-1" data-translate="form_email_label"></label>
-                                    <input type="email" name="email" data-translate-placeholder="form_email_placeholder" placeholder="your.email@example.com" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
+                                    <input type="email" name="email" autocomplete="email" required data-translate-placeholder="form_email_placeholder" placeholder="your.email@example.com" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-xs font-mono text-slate-400 mb-1" data-translate="form_subject_label"></label>
-                                <input type="text" name="subject" data-translate-placeholder="form_subject_placeholder" placeholder="Project collaboration" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
+                                <input type="text" name="subject" required data-translate-placeholder="form_subject_placeholder" placeholder="Project collaboration" class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"/>
                             </div>
 
                             <div>
                                 <label class="block text-xs font-mono text-slate-400 mb-1" data-translate="form_message_label"></label>
-                                <textarea name="message" rows="4" data-translate-placeholder="form_message_placeholder" placeholder="Hello Nikola, I would like to discuss..." class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"></textarea>
+                                <textarea name="message" autocomplete="off" required rows="4" data-translate-placeholder="form_message_placeholder" placeholder="Hello Nikola, I would like to discuss..." class="w-full rounded-xl px-3 py-2.5 text-sm resize-none bg-white border border-slate-300 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 dark:bg-slate-900/80 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500"></textarea>
                             </div>
 
                             <div class="pt-2">
@@ -328,10 +312,10 @@
                 <a data-translate="footer_privacy" id="privacyLink" href="privacy.html" class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"></a>
                 <a data-translate="footer_terms" id="termsLink" href="terms.html" class="text-sm text-slate-400 hover:text-emerald-400 transition-colors"></a>
 
-                <a href="https://github.com/nikolasarafimov" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                <a href="mailto:sarafimov.nikola12345@gmail.com" target="_blank" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/nikolasarafimov" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/nikola-sarafimov-418753357/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/nikola.sarafimov/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                <a href="mailto:sarafimov.nikola12345@gmail.com" aria-label="Email" class="text-xl hover:text-emerald-400 transition-colors"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
             </div>
         </div>
     </footer>
@@ -340,12 +324,38 @@
     <script>
         let currentLang = localStorage.getItem("siteLang") || "en";
 
+        if (typeof translations === "undefined") {
+            console.error("translations.js failed to load.");
+        }
+
+        function updatePageTitle() {
+            document.title = translations?.[currentLang]?.page_contact_title || "Nikola Sarafimov | Contact";
+        }
+
+        function updateHtmlLang() {
+            document.documentElement.lang = currentLang === "mk" ? "mk" : "en";
+        }
+
         function applyTranslations() {
+            const htmlKeys = new Set([
+                "form_name_label",
+                "form_email_label",
+                "form_subject_label",
+                "form_message_label"
+            ]);
+
             document.querySelectorAll("[data-translate]").forEach(el => {
                 const key = el.getAttribute("data-translate");
                 const value = translations?.[currentLang]?.[key];
-                if (value) el.innerHTML = value;
+                if (!value) return;
+
+                if (htmlKeys.has(key)) {
+                    el.innerHTML = value;
+                } else {
+                    el.textContent = value;
+                }
             });
+
             applyPlaceholderTranslations();
         }
 
@@ -380,17 +390,13 @@
         }
 
         function updateFooterName() {
-            const footerName = document.getElementById("footerName");
-            if (footerName && translations?.[currentLang]?.footer_name) {
-                footerName.textContent = translations[currentLang].footer_name;
-            }
+            const el = document.getElementById("footerName");
+            if (el) el.textContent = translations?.[currentLang]?.footer_name || "Nikola Sarafimov";
         }
 
         function updateFooterText() {
-            const footerText = document.getElementById("footerText");
-            if (footerText && translations?.[currentLang]?.footer_full) {
-                footerText.textContent = translations[currentLang].footer_full;
-            }
+            const el = document.getElementById("footerText");
+            if (el) el.textContent = translations?.[currentLang]?.footer_full || "All rights reserved.";
         }
 
         function switchLanguage() {
@@ -402,6 +408,8 @@
             updateLanguageButton();
             updateFooterName();
             updateFooterText();
+            updatePageTitle();
+            updateHtmlLang();
 
             const langBtn = document.getElementById("langToggle");
             const langBtnMobile = document.getElementById("langToggleMobile");
@@ -421,14 +429,13 @@
         updateLanguageButton();
         updateFooterName();
         updateFooterText();
+        updatePageTitle();
+        updateHtmlLang();
 
         document.getElementById("langToggle")?.addEventListener("click", switchLanguage);
         document.getElementById("langToggleMobile")?.addEventListener("click", switchLanguage);
 
-        const startYear = 2023;
-        const currentYear = new Date().getFullYear();
-        const yearEl = document.getElementById("year");
-        if (yearEl) yearEl.textContent = currentYear === startYear ? `${startYear}` : `${startYear}–${currentYear}`;
+        document.getElementById("year").textContent = new Date().getFullYear();
 
         const navToggle = document.getElementById("navToggle");
         const mobileMenu = document.getElementById("mobileMenu");
@@ -437,11 +444,21 @@
 
         if (navToggle && mobileMenu && navIconOpen && navIconClose) {
             navToggle.addEventListener("click", () => {
-                mobileMenu.classList.toggle("menu-open");
+                const isOpen = mobileMenu.classList.toggle("menu-open");
                 navIconOpen.classList.toggle("hidden");
                 navIconClose.classList.toggle("hidden");
+                navToggle.setAttribute("aria-expanded", String(isOpen));
             });
         }
+
+        document.querySelectorAll("#mobileMenu a").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("menu-open");
+                navIconOpen.classList.remove("hidden");
+                navIconClose.classList.add("hidden");
+                navToggle.setAttribute("aria-expanded", "false");
+            });
+        });
 
         const root = document.documentElement;
         const themeToggle = document.getElementById("themeToggle");
@@ -478,7 +495,6 @@
             }
         }
 
-        if (localStorage.getItem("theme") === "light") root.classList.remove("dark");
         updateThemeIcons();
 
         function toggleTheme() {
@@ -494,7 +510,7 @@
             let path = window.location.pathname.split("/").pop().toLowerCase();
             if (path === "" || path === "/") path = "contact.html";
 
-            document.querySelectorAll("a[href]").forEach(link => {
+            document.querySelectorAll("nav a[href], #mobileMenu a[href]").forEach(link => {
                 const href = link.getAttribute("href");
                 if (!href) return;
 
@@ -515,7 +531,7 @@
         }
         markActiveNav();
 
-        const EMAILJS_SERVICE_ID = "service_447qhx6";
+        const EMAILJS_SERVICE_ID = "service_i9laje3";
         const EMAILJS_TEMPLATE_ID = "template_jc07auf";
 
         const contactForm = document.getElementById("contactForm");
@@ -534,13 +550,29 @@
             contactForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
 
+                const honeypot = contactForm.elements["company"]?.value;
                 const name = contactForm.elements["name"]?.value.trim();
                 const email = contactForm.elements["email"]?.value.trim();
                 const subject = contactForm.elements["subject"]?.value.trim();
                 const message = contactForm.elements["message"]?.value.trim();
 
+                const fillAll = translations?.[currentLang]?.form_error_fill_all || "Please fill in all fields.";
+                const sendError = translations?.[currentLang]?.form_error_send || "Error sending message. Please try again later.";
+
+                const shortMessage = translations?.[currentLang]?.form_error_short_message || "Message is too short.";
+                const waitMessage = translations?.[currentLang]?.form_error_wait || "Please wait before sending another message.";
+
+                if (honeypot) {
+                    return;
+                }
+
                 if (!name || !email || !subject || !message) {
-                    setStatus("Please fill in all fields.", "#f87171");
+                    setStatus(fillAll, "#f87171");
+                    return;
+                }
+
+                if (message.length < 10) {
+                    setStatus(shortMessage, "#f87171");
                     return;
                 }
 
@@ -561,14 +593,19 @@
                     const successText = translations?.[currentLang]?.form_success_text || "Message sent successfully!";
                     setStatus(successText, "#6ee7b7");
 
+                    localStorage.setItem("lastMessageTime", Date.now());
                     contactForm.reset();
+
                     setTimeout(() => {
                         if (formStatus) formStatus.style.opacity = "0";
                     }, 3500);
 
                 } catch (err) {
-                    console.error("EmailJS FAILED:", err);
-                    setStatus("Error sending message. Please try again later.", "#f87171");
+                    console.error("EmailJS FAILED status:", err?.status);
+                    console.error("EmailJS FAILED text:", err?.text);
+                    console.error("EmailJS FAILED message:", err?.message);
+                    console.error("EmailJS FAILED full object:", err);
+                    setStatus(sendError, "#f87171");
                 } finally {
                     if (submitButton) {
                         submitButton.disabled = false;

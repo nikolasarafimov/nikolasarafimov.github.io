@@ -7,13 +7,16 @@ const translations = {
         nav_portfolio: "Portfolio",
         nav_contact: "Contact",
 
+        /*---------------------------------------*/
+
+        page_home_title: "Nikola Sarafimov | Home",
         im_nikola: "I'm",
         nikola_name: "Nikola Sarafimov",
 
-        typing1: "CS & Software Engineering Student",
-        typing2: "Web Development Enthusiast",
+        typing1: "CS Student",
+        typing2: "Web Dev Enthusiast",
         typing3: "Problem Solver",
-        typing4: "Code Enthusiast",
+        typing4: "Code Lover",
         typing5: "Lifelong Learner",
 
         about_me: "A computer science & software engineering student focused on building modern web applications, solving problems, and continuously learning new technologies.",
@@ -24,21 +27,23 @@ const translations = {
 
         /*---------------------------------------*/
 
+        page_bio_title: "Nikola Sarafimov | Biography",
         bio_page_title: "Biography",
         bio_page_subtitle: "My journey in the world of programming",
         bio_title: "About Me",
 
         bio_p1: "My name is <strong class='text-emerald-300'>Nikola Sarafimov</strong>, а Computer Science & Software Engineering student at the <strong class='text-emerald-300'>Faculty of Computer Science and Engineering (FCSE)</strong>. Based in Skopje, Macedonia, I focus on building practical, well-structured software with an emphasis on clarity, maintainability, and real-world usability.",
         bio_p2: "Prior to entering the field of computer science, I graduated from high school as a <strong class='text-emerald-300'>laboratory technician</strong>, where I developed a strong foundation in discipline, precision, and responsibility. These qualities naturally translated into my approach to programming and problem-solving.",
-        bio_p3: "While I have experience across multiple areas of software development, I am particularly drawn to <strong class='text-emerald-300'>Full-stack Web Development</strong>. I enjoy the process of designing and implementing complete systems - from intuitive user interfaces to robust backend architectures - using technologies such as <strong class='text-emerald-300'>React, Spring Boot, .NET Core, Django, Python, C#, Java</strong> etc.",
+        bio_p3: "While I have knowledge across multiple areas of software development, I am particularly drawn to <strong class='text-emerald-300'>Full-stack Web Development</strong>. I enjoy the process of designing and implementing complete systems - from intuitive user interfaces to robust backend architectures - using technologies such as <strong class='text-emerald-300'>React, Spring Boot, .NET Core, Django</strong> etc.",
         bio_p4: "My long-term goal is to grow into a highly capable <strong class='text-emerald-300'>Full-Stack Web Developer</strong>, contributing to meaningful projects both independently and within collaborative, multidisciplinary teams.",
-        bio_p5: "Beyond software development, I have a strong interest in <strong>video editing</strong>, sports, and reading. These activities help me maintain creativity, balance, and a clear perspective, which I believe are essential for long-term professional growth.",
+        bio_p5: "Beyond software development, I have a strong interest in <strong>video editing</strong>, sports and so on. These activities help me maintain creativity, balance, and a clear perspective, which I believe are essential for long-term professional growth.",
 
         bio_status_label: "status:",
         bio_status: "\"Open for opportunities\"",
 
         /*---------------------------------------*/
 
+        page_skills_title: "Nikola Sarafimov | Skills",
         skills_title: "Skills",
         skills_subtitle: "Technologies and concepts I use to design, build, and maintain modern applications",
 
@@ -62,6 +67,7 @@ const translations = {
 
         /*---------------------------------------*/
 
+        page_portfolio_title: "Nikola Sarafimov | Portfolio",
         portfolio_title: "Portfolio",
         portfolio_subtitle: "A selection of projects that showcase how I think about design, code structure, and modern web development",
 
@@ -69,19 +75,19 @@ const translations = {
         p1_desc: "End-to-end AI pipeline for processing blood test documents (PDFs/images), including OCR, anonymization, structured extraction, and LOINC enrichment.",
 
         p2_title: "Digital Macedonian Dictionary",
-        p2_desc: "Open-source web dictionary with 1.3M+ Macedonian word forms, featuring morphological tagging and fast in-browser search.",
+        p2_desc: "Interactive, open-source web dictionary with 1.3M+ Macedonian word forms, featuring morphological tagging and fast in-browser search.",
 
         p3_title: "Movie Ticket MVC Application",
-        p3_desc: "ASP.NET MVC web application for cinema ticket management with authentication, role-based access, and full CRUD functionality.",
+        p3_desc: "ASP.NET MVC web application for managing and purchasing cinema ticket management with authentication, role-based access, and full CRUD functionality.",
 
         p4_title: "CDN Simulator",
-        p4_desc: "Full-stack simulation of a Content Delivery Network (CDN) implementing caching strategies, routing logic, and distributed request handling.",
+        p4_desc: "Full-stack simulation of a Content Delivery Network (CDN) implementing caching strategies, routing logic, authentication and distributed request handling.",
 
         p5_title: "Student Project Management System",
         p5_desc: "Full-stack Spring Boot web application for managing project proposals with role-based workflows, submission handling, and administrative validation.",
 
         p6_title: "Pet Adoption Platform",
-        p6_desc: "Pet Adoption Platform is a .NET Core app...",
+        p6_desc: "ASP.NET Core MVC pet adoption platform with Onion Architecture, role-based access, CRUD features, adoption request workflow, and Dog API integration.",
 
 
         portfolio_live_demo: "Live Demo",
@@ -91,6 +97,7 @@ const translations = {
 
         /*---------------------------------------*/
 
+        page_contact_title: "Nikola Sarafimov | Contact",
         contact_title: "Contact",
         contact_subtitle: "Feel free to reach out — I usually reply within a day",
         contact_getintouch_title: "Get in Touch",
@@ -113,6 +120,8 @@ const translations = {
 
         form_button_text: "Execute sendMessage()",
         form_success_text: "Message sent successfully. I’ll get back to you soon! :)",
+        form_error_short_message: "Message is too short.",
+        form_error_wait: "Please wait before sending another message.",
 
         /*---------------------------------------*/
 
@@ -130,14 +139,17 @@ const translations = {
         nav_portfolio: "Портфолио",
         nav_contact: "Контакт",
 
+        /*---------------------------------------*/
+
+        page_home_title: "Никола Сарафимов | Почетна",
         im_nikola: "Јас сум",
         nikola_name: "Никола Сарафимов",
 
         typing1: "Студент по компјутерски науки",
-        typing2: "Студент по софтверско инженерство",
-        typing3: "Ентузијаст за веб развој",
-        typing4: "Решавач на проблеми",
-        typing5: "Љубител на кодирање",
+        typing2: "Ентузијаст за веб развој",
+        typing3: "Решавач на проблеми",
+        typing4: "Љубител на код",
+        typing5: "Доживотен ученик",
 
         about_me: "Студент по компјутерски науки и софтверско инженерство фокусиран на создавање модерни веб апликации, решавање проблеми и континуирано учење нови технологии.",
 
@@ -147,21 +159,23 @@ const translations = {
 
         /*---------------------------------------*/
 
+        page_bio_title: "Никола Сарафимов | Биографија",
         bio_page_title: "Биографија",
         bio_page_subtitle: "Моето патување во светот на програмирањето",
         bio_title: "За мене",
 
         bio_p1: "Јас сум <strong class='text-emerald-300'>Никола Сарафимов</strong>, студент на <strong class='text-emerald-300'>Факултетот за информатички науки и компјутерско инженерство</strong>. Живеам во Скопје, Македонија, каде што се фокусирам на развој на практичен и добро структуриран софтвер, со посебен акцент на јасност, одржливост и реална применливост.",
         bio_p2: "Пред да започнам со студии во областа на компјутерските науки, завршив средно образование како <strong class='text-emerald-300'>лабораториски техничар</strong>, каде што изградив силна основа во дисциплина, прецизност и одговорност. Овие квалитети природно се пренесоа и во мојот пристап кон програмирањето и решавањето проблеми.",
-        bio_p3: "Иако имам искуство во повеќе области од софтверскиот развој, најмногу сум насочен кон <strong class='text-emerald-300'>Full-stack веб развој</strong>. Уживам во процесот на дизајнирање и имплементација на комплетни системи – од интуитивни кориснички интерфејси до стабилни и скалабилни backend архитектури – користејќи технологии како <strong class='text-emerald-300'>React, Spring Boot, .NET Core, Django, Python, C#, Java</strong> и слично.",
+        bio_p3: "Иако имам познавање во повеќе области од софтверскиот развој, најмногу сум насочен кон <strong class='text-emerald-300'>Full-stack веб развој</strong>. Уживам во процесот на дизајнирање и имплементација на комплетни системи – од интуитивни кориснички интерфејси до стабилни и скалабилни backend архитектури – користејќи технологии како <strong class='text-emerald-300'>React, Spring Boot, .NET Core, Django</strong> и слично.",
         bio_p4: "Мојата долгорочна цел е да се развијам во високо способен <strong class='text-emerald-300'>Full-Stack Web Developer</strong>, кој придонесува кон значајни проекти, како самостојно, така и во рамки на тимска и мултидисциплинарна соработка.",
-        bio_p5: "Надвор од светот на програмирањето, имам изразен интерес за <strong>видео монтажа</strong>, спорт и читање. Овие активности ми помагаат да ја одржувам креативноста, рамнотежата и јасната перспектива, кои сметам дека се клучни за долгорочен професионален развој.",
+        bio_p5: "Надвор од светот на програмирањето, имам изразен интерес за <strong>видео монтажа</strong>, спорт и слично. Овие активности ми помагаат да ја одржувам креативноста, рамнотежата и јасната перспектива, кои сметам дека се клучни за долгорочен професионален развој.",
 
         bio_status_label: "статус:",
         bio_status: "\"Отворен за соработка\"",
 
         /*---------------------------------------*/
 
+        page_skills_title: "Никола Сарафимов | Вештини",
         skills_title: "Вештини",
         skills_subtitle: "Технологии и концепти што ги користам за дизајн, развој и одржување на модерни апликации",
 
@@ -185,6 +199,7 @@ const translations = {
 
         /*---------------------------------------*/
 
+        page_portfolio_title: "Никола Сарафимов | Портфолио",
         portfolio_title: "Портфолио",
         portfolio_subtitle: "Избор на проекти што го покажуваат моето размислување за дизајнот, структурата на кодот и модерниот веб-развој",
 
@@ -192,10 +207,10 @@ const translations = {
         p1_desc: "AI систем за обработка на документи за крвни тестови (PDF/слики), вклучувајќи OCR, анонимизација, структурирана екстракција и збогатување на LOINC.",
 
         p2_title: "Дигитален Македонски речник",
-        p2_desc: "Веб-речник со отворен код со над 1,3 милиони македонски зборовни форми, со морфолошко означување и брзо пребарување во прелистувач.",
+        p2_desc: "Интерактивен веб-речник со отворен код со над 1,3 милиони македонски зборовни форми, со морфолошко означување и брзо пребарување во прелистувач.",
 
         p3_title: "Апликација за купување билети",
-        p3_desc: "ASP.NET MVC веб-апликација за управување со билети за кино со автентикација, пристап базиран на улоги и целосна CRUD функционалност.",
+        p3_desc: "ASP.NET MVC веб-апликација за управување и купување билети за кино со автентикација, пристап базиран на улоги и целосна CRUD функционалност.",
 
         p4_title: "CDN Симулатор",
         p4_desc: "Целосна симулација на мрежа за испорака на содржини (CDN) што имплементира стратегии за кеширање, логика за рутирање и дистрибуирано ракување со барања.",
@@ -203,8 +218,8 @@ const translations = {
         p5_title: "Систем за управување со проекти",
         p5_desc: "Spring Boot веб-апликација за управување со проектни предлози со работни процеси базирани на улоги, ракување со поднесувања и административна валидација.",
 
-        p6_title: "Платформа за вдомување миленици",
-        p6_desc: "Платформата за посвојување миленици е .NET Core апликација...",
+        p6_title: "Систем за вдомување миленици",
+        p6_desc: "ASP.NET Core платформа за посвојување домашни миленици со Onion архитектура, пристап базиран на улоги, CRUD функции, работен тек на барања и Dog API интеграција.",
 
         portfolio_live_demo: "Демо",
         portfolio_source_code: "Изворен код",
@@ -213,10 +228,11 @@ const translations = {
 
         /*---------------------------------------*/
 
+        page_contact_title: "Никола Сарафимов | Контакт",
         contact_title: "Контакт",
         contact_subtitle: "Слободно контактирај ме — обично одговарам во рок од еден ден",
         contact_getintouch_title: "Контактирај ме",
-        contact_getintouch_text: "Доколку имаш идеја за проект, сакаш соработка или само да се поздравиш, можеш да ме контактираш преку формуларот или социјалните мрежи подолу.",
+        contact_getintouch_text: "Доколку имате идеја за проект, сакате соработка или само да се поздравите, можете да ме контактирате преку формуларот или социјалните мрежи подолу.",
         contact_label_email: "Емаил адреса",
         contact_label_location: "Локација",
         contact_location: "Скопје, Македонија",
@@ -235,6 +251,8 @@ const translations = {
 
         form_button_text: "Испрати порака",
         form_success_text: "Пораката е успешно испратена. Ќе ви одговорам наскоро! :)",
+        form_error_short_message: "Пораката е премногу кратка.",
+        form_error_wait: "Ве молиме почекајте пред да испратите друга порака.",
 
         /*---------------------------------------*/
 

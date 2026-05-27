@@ -20,6 +20,7 @@ const translations = {
 
         btn_portfolio: "View Portfolio",
         btn_contact: "Contact Me",
+        btn_cvdownload: "Download CV",
 
         /*---------------------------------------*/
 
@@ -142,6 +143,7 @@ const translations = {
 
         btn_portfolio: "Види Портфолио",
         btn_contact: "Контактирајте ме",
+        btn_cvdownload: "Преземи CV",
 
         /*---------------------------------------*/
 
